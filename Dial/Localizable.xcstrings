@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "%lld controllers, %lld activated" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -46,6 +47,7 @@
       }
     },
     "Accessibility Access" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -100,6 +102,7 @@
       }
     },
     "Activated" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -110,6 +113,7 @@
       }
     },
     "Alternates direction" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -120,6 +124,7 @@
       }
     },
     "Application Data" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -150,6 +155,7 @@
       }
     },
     "Auto hides menu bar item" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -160,6 +166,7 @@
       }
     },
     "Automatically checks for updates" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -170,6 +177,7 @@
       }
     },
     "Builtin" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -180,6 +188,7 @@
       }
     },
     "Builtin Controller" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -200,6 +209,7 @@
       }
     },
     "By sending feedbacks, you can report bugs, request features or more. Issue templates are provided for detailing your feedbacks." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -210,6 +220,7 @@
       }
     },
     "Check for Updates…" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -220,6 +231,7 @@
       }
     },
     "Configurations" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -240,6 +252,7 @@
       }
     },
     "Controller activated" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -658,6 +671,7 @@
       }
     },
     "Dial Menu" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -822,6 +836,7 @@
       }
     },
     "Direction" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -886,6 +901,7 @@
       }
     },
     "Double press" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -896,6 +912,7 @@
       }
     },
     "Follows physical direction" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -906,6 +923,7 @@
       }
     },
     "Fundamental" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -916,6 +934,7 @@
       }
     },
     "General" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -936,6 +955,7 @@
       }
     },
     "Global Behavior" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -956,6 +976,7 @@
       }
     },
     "Granted" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -966,6 +987,7 @@
       }
     },
     "Haptic feedback" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -974,9 +996,6 @@
           }
         }
       }
-    },
-    "Hello, World!" : {
-
     },
     "HID device communications" : {
       "localizations" : {
@@ -989,6 +1008,7 @@
       }
     },
     "Hides menu bar item while device disconnected. To see this window again, please re-open %@." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -999,6 +1019,7 @@
       }
     },
     "Inactivated" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1029,6 +1050,7 @@
       }
     },
     "Menu Bar Item" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1117,6 +1139,7 @@
       }
     },
     "More…" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1127,6 +1150,7 @@
       }
     },
     "None" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1137,6 +1161,7 @@
       }
     },
     "Not granted" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1167,6 +1192,7 @@
       }
     },
     "Permissions" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1177,6 +1203,7 @@
       }
     },
     "Press" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1187,6 +1214,7 @@
       }
     },
     "Press a key…" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1207,6 +1235,7 @@
       }
     },
     "Press and rotate clockwisely" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1217,6 +1246,7 @@
       }
     },
     "Press and rotate counterclockwisely" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1247,6 +1277,7 @@
       }
     },
     "Re-open %@ to see this window." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1257,6 +1288,7 @@
       }
     },
     "Remove" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1267,6 +1299,7 @@
       }
     },
     "Rename" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1277,6 +1310,7 @@
       }
     },
     "Request Access…" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1297,6 +1331,7 @@
       }
     },
     "Rotate clockwisely" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1307,6 +1342,7 @@
       }
     },
     "Rotate counterclockwisely" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1317,6 +1353,7 @@
       }
     },
     "Rotation type" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1361,6 +1398,7 @@
       }
     },
     "Send Feedback…" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1371,6 +1409,7 @@
       }
     },
     "Sensitivity" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1466,6 +1505,7 @@
       }
     },
     "Settings…" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1476,6 +1516,7 @@
       }
     },
     "Shows menu bar item" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1496,6 +1537,7 @@
       }
     },
     "Starts with macOS" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1516,6 +1558,7 @@
       }
     },
     "SURFACE DIAL DISCONNECTED" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1526,6 +1569,7 @@
       }
     },
     "This controller is builtin, customizations are not applicable." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1536,6 +1580,7 @@
       }
     },
     "This option applies after \"Follows physical direction\"." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1546,6 +1591,7 @@
       }
     },
     "Triggers when…" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1566,6 +1612,7 @@
       }
     },
     "Updates" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {

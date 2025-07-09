@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MenuBarExtraAccess
+import SFSafeSymbols
 
 var dial: SurfaceDial = .init()
 
@@ -26,26 +27,9 @@ struct DialApp: App {
     @State var isMenuBarItemPresented: Bool = false
     
     var body: some Scene {
-        Settings {
-            SettingsView()
-        }
-        
-        MenuBarExtra("Dial", image: "None") {
+        MenuBarExtra("Dial", systemImage: SFSymbol.hockeyPuck.rawValue) {
             MenuBarMenuView()
         }
         .menuBarExtraStyle(.menu)
-        .menuBarExtraAccess(isPresented: $isMenuBarItemPresented) { menuBarItem in
-            guard
-                // Init once
-                let button = menuBarItem.button,
-                button.subviews.count == 0
-            else { return }
-            
-            menuBarItem.length = 40
-            
-            let view = NSHostingView(rootView: MenuBarIconView())
-            view.frame.size = .init(width: 40, height: NSStatusBar.system.thickness)
-            button.addSubview(view)
-        }
     }
 }

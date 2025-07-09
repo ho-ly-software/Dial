@@ -104,24 +104,6 @@ struct MenuBarMenuView: View {
             Text(.init(localized: .init("Menu: Starts with macOS", defaultValue: "Starts with macOS")))
         }
         
-        SettingsLink(
-            label: {
-                Text("Settings…")
-            },
-            preAction: {
-                for window in NSApp.windows where window.toolbar?.items != nil {
-                    window.close()
-                }
-            },
-            postAction: {
-                for window in NSApp.windows where window.toolbar?.items != nil {
-                    window.orderFrontRegardless()
-                    window.center()
-                }
-            }
-        )
-        .keyboardShortcut(",", modifiers: .command)
-        
         Button("About \(Bundle.main.appName)…") {
             NSApp.setActivationPolicy(.regular)
             AboutViewController.open()
