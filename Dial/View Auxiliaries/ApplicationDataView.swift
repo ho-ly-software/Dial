@@ -102,6 +102,7 @@ struct ApplicationDataView: View {
     func resetGlobalConfigurations() {
         Defaults.reset(
             .globalHapticsEnabled,
+            .globalScrollSmoothEnabled,
             .menuBarItemEnabled,
             .menuBarItemAutoHidden,
             .globalSensitivity,

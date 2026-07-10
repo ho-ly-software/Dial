@@ -15,6 +15,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Force load dial instance
         print("!!! Force loaded \(dial) !!!")
         
+        // Force load HUDManager to observe controller changes
+        _ = HUDManager.shared
+        
         PermissionsManager.requestAccess()
     }
     

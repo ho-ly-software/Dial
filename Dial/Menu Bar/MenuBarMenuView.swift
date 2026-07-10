@@ -18,6 +18,7 @@ struct MenuBarMenuView: View {
     @Default(.currentControllerID) var currentControllerID
     
     @Default(.globalHapticsEnabled) var globalHapticsEnabled
+    @Default(.globalScrollSmoothEnabled) var globalScrollSmoothEnabled
     @Default(.globalSensitivity) var globalSensitivity
     @Default(.globalDirection) var globalDirection
     
@@ -74,6 +75,10 @@ struct MenuBarMenuView: View {
         
         Toggle(isOn: $globalHapticsEnabled) {
             Text(.init(localized: .init("Menu: Haptics", defaultValue: "Haptic Feedback")))
+        }
+        
+        Toggle(isOn: $globalScrollSmoothEnabled) {
+            Text(.init(localized: .init("Menu: Smooth Scroll", defaultValue: "Smooth Scroll")))
         }
         
         Picker(selection: $globalSensitivity) {

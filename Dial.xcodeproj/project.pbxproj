@@ -17,7 +17,6 @@
 		2821DA7A2BAEF60B0017B5DD /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2821DA792BAEF60B0017B5DD /* View+Extension.swift */; };
 		2821DA7D2BAF1AD20017B5DD /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 2821DA7C2BAF1AD20017B5DD /* LaunchAtLogin */; };
 		2831AD8B2BAF9B8B0064821C /* MenuBarMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2831AD8A2BAF9B8B0064821C /* MenuBarMenuView.swift */; };
-		283856E42BB026EF00860E7C /* UTType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283856E32BB026EF00860E7C /* UTType+Extension.swift */; };
 		286971102BAB2C170074C2FB /* MenuBarExtraAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 2869710F2BAB2C170074C2FB /* MenuBarExtraAccess */; };
 		286971182BAB2F6F0074C2FB /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286971172BAB2F6F0074C2FB /* Bundle+Extension.swift */; };
 		2887D76B2BABFB6100D733FC /* Defaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887D76A2BABFB6100D733FC /* Defaults+Extension.swift */; };
@@ -41,21 +40,19 @@
 		28DC1B642BB8082100EBE057 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC1B632BB8082100EBE057 /* EventMonitor.swift */; };
 		28DC1B662BB8101500EBE057 /* ModifierFlags+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC1B652BB8101500EBE057 /* ModifierFlags+Extensions.swift */; };
 		28DC1B682BB81F9300EBE057 /* ControllerDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC1B672BB81F9300EBE057 /* ControllerDescription.swift */; };
-		28DC1B6B2BB8242500EBE057 /* ISSoundAdditions in Frameworks */ = {isa = PBXBuildFile; productRef = 28DC1B6A2BB8242500EBE057 /* ISSoundAdditions */; };
-		28E4CBAB2BB1AD5F0054106D /* StaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4CBAA2BB1AD5F0054106D /* StaleView.swift */; };
-		28E4CBAD2BB1B0D60054106D /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E4CBAC2BB1B0D60054106D /* DummyView.swift */; };
 		28E71A362BAFCE9500722045 /* ShrinkableEqualWidthVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71A352BAFCE9500722045 /* ShrinkableEqualWidthVStack.swift */; };
 		28E71A392BAFD57300722045 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71A382BAFD57300722045 /* AboutViewController.swift */; };
 		28E71A3B2BAFD57800722045 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71A3A2BAFD57800722045 /* AboutView.swift */; };
 		28E71A3D2BAFD80D00722045 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71A3C2BAFD80D00722045 /* VisualEffectView.swift */; };
 		28E71A3F2BAFDA3700722045 /* AppVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71A3E2BAFDA3700722045 /* AppVersionView.swift */; };
 		28E71A412BAFDAE800722045 /* AcknowledgementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71A402BAFDAE800722045 /* AcknowledgementsView.swift */; };
+		28E71A432BAFDAEA00722045 /* HUDWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71A422BAFDAEA00722045 /* HUDWindow.swift */; };
 		28EE29B02BAB2155009005C3 /* DialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EE29AF2BAB2155009005C3 /* DialApp.swift */; };
-		28EE29B42BAB2156009005C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28EE29B32BAB2156009005C3 /* Assets.xcassets */; };
 		28EE29B72BAB2156009005C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28EE29B62BAB2156009005C3 /* Preview Assets.xcassets */; };
 		28EE29CB2BAB2234009005C3 /* SettingsAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 28EE29CA2BAB2234009005C3 /* SettingsAccess */; };
 		28EE29CE2BAB2245009005C3 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 28EE29CD2BAB2245009005C3 /* Defaults */; };
 		28EE29D12BAB2258009005C3 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 28EE29D02BAB2258009005C3 /* SFSafeSymbols */; };
+		647F5CCF300197C5000BF082 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 647F5CCE300197C5000BF082 /* AppIcon.icon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,7 +65,6 @@
 		2821DA772BAEE8250017B5DD /* ObservationTrackingStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationTrackingStream.swift; sourceTree = "<group>"; };
 		2821DA792BAEF60B0017B5DD /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		2831AD8A2BAF9B8B0064821C /* MenuBarMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarMenuView.swift; sourceTree = "<group>"; };
-		283856E32BB026EF00860E7C /* UTType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+Extension.swift"; sourceTree = "<group>"; };
 		283856E52BB028A500860E7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		286971172BAB2F6F0074C2FB /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		2887D76A2BABFB6100D733FC /* Defaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Defaults+Extension.swift"; sourceTree = "<group>"; };
@@ -93,19 +89,18 @@
 		28DC1B632BB8082100EBE057 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		28DC1B652BB8101500EBE057 /* ModifierFlags+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModifierFlags+Extensions.swift"; sourceTree = "<group>"; };
 		28DC1B672BB81F9300EBE057 /* ControllerDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerDescription.swift; sourceTree = "<group>"; };
-		28E4CBAA2BB1AD5F0054106D /* StaleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaleView.swift; sourceTree = "<group>"; };
-		28E4CBAC2BB1B0D60054106D /* DummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
 		28E71A352BAFCE9500722045 /* ShrinkableEqualWidthVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrinkableEqualWidthVStack.swift; sourceTree = "<group>"; };
 		28E71A382BAFD57300722045 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		28E71A3A2BAFD57800722045 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		28E71A3C2BAFD80D00722045 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		28E71A3E2BAFDA3700722045 /* AppVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionView.swift; sourceTree = "<group>"; };
 		28E71A402BAFDAE800722045 /* AcknowledgementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsView.swift; sourceTree = "<group>"; };
+		28E71A422BAFDAEA00722045 /* HUDWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDWindow.swift; sourceTree = "<group>"; };
 		28EE29AC2BAB2155009005C3 /* Dial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28EE29AF2BAB2155009005C3 /* DialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialApp.swift; sourceTree = "<group>"; };
-		28EE29B32BAB2156009005C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28EE29B62BAB2156009005C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		28EE29B82BAB2156009005C3 /* Dial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dial.entitlements; sourceTree = "<group>"; };
+		647F5CCE300197C5000BF082 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +112,6 @@
 				28EE29CE2BAB2245009005C3 /* Defaults in Frameworks */,
 				286971102BAB2C170074C2FB /* MenuBarExtraAccess in Frameworks */,
 				2821DA7D2BAF1AD20017B5DD /* LaunchAtLogin in Frameworks */,
-				28DC1B6B2BB8242500EBE057 /* ISSoundAdditions in Frameworks */,
 				28EE29CB2BAB2234009005C3 /* SettingsAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,7 +150,6 @@
 				2887D76E2BABFBD100D733FC /* SFSymbol+Extension.swift */,
 				2806E9BD2BAC5C8800CD2AE2 /* Date+Extension.swift */,
 				2821DA792BAEF60B0017B5DD /* View+Extension.swift */,
-				283856E32BB026EF00860E7C /* UTType+Extension.swift */,
 				28DC1B652BB8101500EBE057 /* ModifierFlags+Extensions.swift */,
 			);
 			path = Extensions;
@@ -215,11 +208,10 @@
 		28E71A342BAFCE4200722045 /* View Auxiliaries */ = {
 			isa = PBXGroup;
 			children = (
-				28E4CBAC2BB1B0D60054106D /* DummyView.swift */,
-				28E4CBAA2BB1AD5F0054106D /* StaleView.swift */,
 				28AC22162BB1C12D00ADA343 /* Fundamentals */,
 				28E71A372BAFD56900722045 /* About View */,
 				28E71A3C2BAFD80D00722045 /* VisualEffectView.swift */,
+				28E71A422BAFDAEA00722045 /* HUDWindow.swift */,
 				28E71A3E2BAFDA3700722045 /* AppVersionView.swift */,
 				28AC22172BB1C14C00ADA343 /* ApplicationDataView.swift */,
 			);
@@ -240,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				28EE29AE2BAB2155009005C3 /* Dial */,
+				647F5CCE300197C5000BF082 /* AppIcon.icon */,
 				28EE29AD2BAB2155009005C3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -267,7 +260,6 @@
 				286971162BAB2F5F0074C2FB /* Extensions */,
 				28EE29B52BAB2156009005C3 /* Preview Content */,
 				28EE29B82BAB2156009005C3 /* Dial.entitlements */,
-				28EE29B32BAB2156009005C3 /* Assets.xcassets */,
 				2806E9C82BAC6A6600CD2AE2 /* Localizable.xcstrings */,
 				283856E52BB028A500860E7C /* Info.plist */,
 			);
@@ -292,6 +284,7 @@
 				28EE29A82BAB2155009005C3 /* Sources */,
 				28EE29A92BAB2155009005C3 /* Frameworks */,
 				28EE29AA2BAB2155009005C3 /* Resources */,
+				28EE29C02BAB2156009005C3 /* Copy LaunchAtLogin Helper */,
 			);
 			buildRules = (
 			);
@@ -304,7 +297,6 @@
 				28EE29D02BAB2258009005C3 /* SFSafeSymbols */,
 				2869710F2BAB2C170074C2FB /* MenuBarExtraAccess */,
 				2821DA7C2BAF1AD20017B5DD /* LaunchAtLogin */,
-				28DC1B6A2BB8242500EBE057 /* ISSoundAdditions */,
 			);
 			productName = Dial;
 			productReference = 28EE29AC2BAB2155009005C3 /* Dial.app */;
@@ -341,7 +333,6 @@
 				28EE29CF2BAB2258009005C3 /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
 				2869710E2BAB2C170074C2FB /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */,
 				2821DA7B2BAF1AD20017B5DD /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
-				28DC1B692BB8242500EBE057 /* XCRemoteSwiftPackageReference "ISSoundAdditions" */,
 			);
 			productRefGroup = 28EE29AD2BAB2155009005C3 /* Products */;
 			projectDirPath = "";
@@ -358,12 +349,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				28EE29B72BAB2156009005C3 /* Preview Assets.xcassets in Resources */,
-				28EE29B42BAB2156009005C3 /* Assets.xcassets in Resources */,
 				2806E9C92BAC6A6600CD2AE2 /* Localizable.xcstrings in Resources */,
+				647F5CCF300197C5000BF082 /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		28EE29C02BAB2156009005C3 /* Copy LaunchAtLogin Helper */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy LaunchAtLogin Helper";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\" \"${BUILT_PRODUCTS_DIR}\" || true\nrm -rf \"${BUILT_PRODUCTS_DIR}/${CONTENTS_FOLDER_PATH}/Resources/LaunchAtLogin_LaunchAtLogin.bundle\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		28EE29A82BAB2155009005C3 /* Sources */ = {
@@ -374,7 +388,6 @@
 				28E71A392BAFD57300722045 /* AboutViewController.swift in Sources */,
 				28E71A3B2BAFD57800722045 /* AboutView.swift in Sources */,
 				28E71A3F2BAFDA3700722045 /* AppVersionView.swift in Sources */,
-				283856E42BB026EF00860E7C /* UTType+Extension.swift in Sources */,
 				289B83FE2BADC44D00D56D43 /* PermissionsManager.swift in Sources */,
 				2887D77D2BABFE8900D733FC /* SurfaceDial.swift in Sources */,
 				2887D7712BABFBFF00D733FC /* NSString+Extension.swift in Sources */,
@@ -391,13 +404,13 @@
 				2887D7812BAC002400D733FC /* Controller.swift in Sources */,
 				2887D76B2BABFB6100D733FC /* Defaults+Extension.swift in Sources */,
 				28E71A412BAFDAE800722045 /* AcknowledgementsView.swift in Sources */,
+				28E71A432BAFDAEA00722045 /* HUDWindow.swift in Sources */,
 				2887D7732BABFCEA00D733FC /* Defaults+Structures.swift in Sources */,
 				286971182BAB2F6F0074C2FB /* Bundle+Extension.swift in Sources */,
 				2821DA7A2BAEF60B0017B5DD /* View+Extension.swift in Sources */,
 				289B84002BADC4F900D56D43 /* AppDelegate.swift in Sources */,
 				28DC1B662BB8101500EBE057 /* ModifierFlags+Extensions.swift in Sources */,
 				2806E9C52BAC5ED600CD2AE2 /* BrigntnessController.swift in Sources */,
-				28E4CBAB2BB1AD5F0054106D /* StaleView.swift in Sources */,
 				2821DA782BAEE8250017B5DD /* ObservationTrackingStream.swift in Sources */,
 				28E71A362BAFCE9500722045 /* ShrinkableEqualWidthVStack.swift in Sources */,
 				2887D78B2BAC013300D733FC /* Input.swift in Sources */,
@@ -405,7 +418,6 @@
 				2887D7872BAC00AF00D733FC /* ShortcutsController.swift in Sources */,
 				2806E9C12BAC5E6D00CD2AE2 /* ScrollController.swift in Sources */,
 				2887D7832BAC005200D733FC /* MainController.swift in Sources */,
-				28E4CBAD2BB1B0D60054106D /* DummyView.swift in Sources */,
 				2831AD8B2BAF9B8B0064821C /* MenuBarMenuView.swift in Sources */,
 				2887D7792BABFD4E00D733FC /* SymbolRepresentable.swift in Sources */,
 				2806E9C72BAC5EFD00CD2AE2 /* MissionController.swift in Sources */,
@@ -454,7 +466,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -519,7 +531,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -543,6 +555,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CODE_SIGN_ENTITLEMENTS = Dial/Dial.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
@@ -567,9 +580,10 @@
 					"@executable_path/../Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/lib/hidapi/build/src/mac";
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = "-lhidapi";
-				PRODUCT_BUNDLE_IDENTIFIER = studio.nnn.Dial;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ho-ly.dial";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Dial/Dial-Bridging-Header.h";
@@ -582,6 +596,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CODE_SIGN_ENTITLEMENTS = Dial/Dial.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
@@ -607,9 +622,10 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/lib/hidapi/build/src/mac";
 				"LIBRARY_SEARCH_PATHS[arch=x86_64]" = "$(SRCROOT)/lib/hidapi/build_x86/src/mac";
-				MARKETING_VERSION = 1.0;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = "-lhidapi";
-				PRODUCT_BUNDLE_IDENTIFIER = studio.nnn.Dial;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ho-ly.dial";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Dial/Dial-Bridging-Header.h";
@@ -657,14 +673,6 @@
 				minimumVersion = 1.2.1;
 			};
 		};
-		28DC1B692BB8242500EBE057 /* XCRemoteSwiftPackageReference "ISSoundAdditions" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/InerziaSoft/ISSoundAdditions";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		28EE29C92BAB2234009005C3 /* XCRemoteSwiftPackageReference "SettingsAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/orchetect/SettingsAccess";
@@ -701,11 +709,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2869710E2BAB2C170074C2FB /* XCRemoteSwiftPackageReference "MenuBarExtraAccess" */;
 			productName = MenuBarExtraAccess;
-		};
-		28DC1B6A2BB8242500EBE057 /* ISSoundAdditions */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 28DC1B692BB8242500EBE057 /* XCRemoteSwiftPackageReference "ISSoundAdditions" */;
-			productName = ISSoundAdditions;
 		};
 		28EE29CA2BAB2234009005C3 /* SettingsAccess */ = {
 			isa = XCSwiftPackageProductDependency;

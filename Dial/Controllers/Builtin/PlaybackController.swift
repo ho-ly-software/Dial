@@ -8,7 +8,6 @@
 import Foundation
 import AppKit
 import SFSafeSymbols
-import ISSoundAdditions
 
 class PlaybackController: BuiltinController {
     static let instance: PlaybackController = .init()

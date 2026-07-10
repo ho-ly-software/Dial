@@ -1,5 +1,5 @@
 {
-  "originHash" : "74af73ca09ff9ce2ee8dd9010c5860172b7a2099c781de35dbd231a9456103b5",
+  "originHash" : "1f63e56e56f3ac24ee3fcebc245d2e0ab129406d8ccc6f80aeed771d3601be57",
   "pins" : [
     {
       "identity" : "defaults",
@@ -8,15 +8,6 @@
       "state" : {
         "branch" : "main",
         "revision" : "0f73f9401a416336931f2d598662cc524a13b21f"
-      }
-    },
-    {
-      "identity" : "issoundadditions",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/InerziaSoft/ISSoundAdditions",
-      "state" : {
-        "branch" : "master",
-        "revision" : "4b555f0354e6c280917bae8a598a258efe87ab98"
       }
     },
     {

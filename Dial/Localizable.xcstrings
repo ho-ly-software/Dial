@@ -1111,6 +1111,17 @@
         }
       }
     },
+    "Menu: Smooth Scroll" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Smooth Scroll"
+          }
+        }
+      }
+    },
     "Menu: Starts with macOS" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {

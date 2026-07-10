@@ -10,6 +10,7 @@ import Foundation
 
 extension Defaults.Keys {
     static let globalHapticsEnabled = Key<Bool>("hapticsEnabled", default: true)
+    static let globalScrollSmoothEnabled = Key<Bool>("scrollSmoothEnabled", default: true)
     static let menuBarItemEnabled = Key<Bool>("menuBarItemEnabled", default: true)
     static let menuBarItemAutoHidden = Key<Bool>("menuBarItemAutoHidden", default: false)
     

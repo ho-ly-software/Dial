@@ -8,6 +8,7 @@
 import Foundation
 import AppKit
 import SFSafeSymbols
+import Defaults
 
 class ScrollController: BuiltinController {
     static let instance: ScrollController = .init()
@@ -66,6 +67,11 @@ Perform a middle button click.
                 wheel2: 0,
                 wheel3: 0
             )
+            
+            if Defaults[.globalScrollSmoothEnabled] {
+                event?.setIntegerValueField(.scrollWheelEventIsContinuous, value: 1)
+            }
+            
             event?.post(tap: .cghidEventTap)
         default:
             break

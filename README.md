@@ -3,38 +3,116 @@
 ###### Your Surface Dial on Mac.
 
 > [!WARNING]
-> This project is currently working in progress.
+> This project is currently a work in progress.
 
 > [!NOTE]
-> This project is based on [MacDial,](https://github.com/andreasjhkarlsson/mac-dial) with a modern UI and many useful features implemented.
+> This project is based on [MacDial](https://github.com/andreasjhkarlsson/mac-dial), reimagined with a modern, native SwiftUI user interface, improved haptic feedback, and a highly customizable controller architecture to maximize workflow efficiency.
 
-## Development Goals
+---
 
-### ~~Base Logic~~
+Dial is a native macOS companion application that integrates the **Microsoft Surface Dial** seamlessly into macOS. By leveraging low-level USB/Bluetooth HID reports and macOS Accessibility APIs, Dial transforms a physical dial into a powerful productivity interface, boosting task efficiency and user ergonomics.
 
-- [X] Dial connection
-- [X] Device events
-  - [X] Configurable dialing direction
-  - [X] Configurable dialing sensitivity
-- [X] Controller interfaces
+---
 
-### UI
+## 🚀 Key Features
 
-- [X] Status bar button with menu
-- [X] Circular dialing plane
-  - [X] Edge / corner auto absorb
-  - [X] A better look with custom icons
-- [X] Settings window
+- **Built-in Controllers**:
+  - 🔄 **Scroll**: Pixel-perfect scroll-wheel emulation and middle-mouse button clicks.
+  - 🎵 **Playback**: System-wide media control (Play/Pause, Mute, Volume Up/Down, and Media Seek).
+  - ☀️ **Brightness**: Real-time screen brightness adjustments and keyboard backlight toggle/level controls.
+  - 🖥️ **Mission Control**: Tactile App Switcher navigation with auto-confirmation.
+- **Custom Shortcut Mapper**: Create bespoke dial profiles. Map clockwise/counterclockwise rotation, pressed rotation, single click, and double click to any combination of keyboard shortcuts.
+- **Physical Feedback Integration**: Custom haptic feedback patterns (vibrations and buzzes) delivered directly to the physical device.
+- **Modern Native UI**: A sleek, lightweight status bar menu with customizable preferences, onboarding tips (using TipKit), and quick-access toggles.
+- **Universal Architecture**: Built for both Apple Silicon (`arm64`) and Intel (`x86_64`) Macs.
 
-### Functions
+---
 
-- [X] Default controllers
-  - [X] Scroll
-  - [X] Playback
-  - [X] Mission
-  - [X] Luminance
-- [X] Custom shortcut controllers
-  - [X] Data storage
-  - [X] Preference UI
-    - [X] Named label
-    - [X] SF icon chooser
+## 🏗️ Architecture & Codebase Tour
+
+The Dial codebase is structured to maximize performance, reliability, and modularity. Here is an overview of the core components:
+
+```
+Dial
+├── Device/
+│   ├── Hardware.swift         # Low-level HIDAPI wrapper & HID report parser
+│   └── SurfaceDial.swift      # Device interaction coordinator & event router
+├── Controllers/
+│   ├── Controller.swift       # Protocols, IDs, and lifecycle hooks
+│   ├── Builtin/               # Built-in controller implementations
+│   │   ├── MainController.swift
+│   │   ├── ScrollController.swift
+│   │   ├── PlaybackController.swift
+│   │   └── BrightnessController.swift
+│   │   └── MissionController.swift
+│   └── ShortcutsController.swift # Dynamic user-defined shortcut profile evaluator
+├── Utilities/
+│   ├── Input.swift            # CGEvent virtual keyboard & mouse event generation
+│   ├── PermissionsManager.swift # macOS Accessibility permissions request utility
+│   └── ShortcutArray.swift    # Shortcut array storage & dispatcher
+└── Menu Bar/
+    └── MenuBarMenuView.swift  # SwiftUI menu-bar interface
+```
+
+### 🔌 Low-Level Device Interaction (`Device/`)
+- **`Hardware.swift`**: This class directly communicates with the Microsoft Surface Dial (`Vendor ID: 0x045E`, `Product ID: 0x091B`) via the C-based `hidapi` library. It spawns a background polling thread to read raw input reports. It parses report ID `0x01` (retrieving button press/release, rotation detection, and directional delta) and writes output reports to trigger precise haptic sensations (e.g. configuring rotation tick sensitivity or firing physical vibrations).
+- **`SurfaceDial.swift`**: Serves as the primary coordinator. It subscribes to low-level hardware changes and translates raw state changes into higher-level logical events (e.g., long-press "Agent Mode" transitions, double clicks, and calibrated rotational ticks).
+
+### 🎛️ The Controller Framework (`Controllers/`)
+The app operates on an extensible **Controller** paradigm, where each physical action is dispatched to an active logical controller:
+- **`Controller.swift`**: Defines the `Controller` protocol. A controller can process clicks, rotation steps/ticks, and release events.
+- **Agent Mode (`MainController.swift`)**: When a user presses and holds the Surface Dial, it enters **Agent Mode**. In this mode, rotating the dial dynamically cycles through your active list of controllers, allowing on-the-fly context switching with immediate haptic buzz confirmation.
+- **Built-in Controllers**:
+  - **`ScrollController`**: Simulates smooth trackpad/mouse scroll wheel movements via `CGEvent` and routes middle clicks at the cursor.
+  - **`PlaybackController`**: Controls Apple system audio. Pressed rotation changes volume incrementally (`.shift` + `.option` for micro-adjustments), while released rotation performs arrow-key media seeks.
+  - **`BrightnessController`**: Pressed rotation modifies display brightness; standard rotation adjusts keyboard illumination level.
+  - **`MissionController`**: Emulates macOS App Switcher (`Cmd+Tab` and `Cmd+Shift+Tab`). Releasing the physical dial fires a `Return` keypress to confirm selection, while idle timeouts dispatch an `Escape` keypress.
+- **Custom Mapping (`ShortcutsController.swift`)**: Dynamically evaluates user-defined profiles, invoking serializable sequences of virtual keystrokes saved on a per-direction or per-click basis.
+
+### ⌨️ Virtual Input Dispatcher (`Utilities/Input.swift`)
+Posts raw keyboard and mouse events globally using the CoreGraphics framework (`CGEvent`). It includes a comprehensive map of macOS virtual keycodes and utilizes Apple's private system-defined event subtype `8` to dispatch hardware-level media controls (mute, play, brightness, keyboard illumination) without target-app focus requirements.
+
+### ⚙️ State & Configuration Persistence (`Extensions/`)
+Uses the lightweight `Defaults` library to manage state globally:
+- **`Defaults+Extension.swift`**: Declares keys for haptics, menu bar visibility, global rotation sensitivity, direction, and the active controller list.
+- **`Defaults+Structures.swift`**: Houses configurations like `Sensitivity` (maps dial steps into degree intervals for continuous vs. stepping rotations) and `Direction` (customizes physical rotation polarity).
+
+---
+
+## 🛠️ How to Build and Run
+
+To compile and launch Dial locally:
+
+### 1. Build HIDAPI Static Library
+Dial links against `hidapi` statically. A build script is provided to compile a universal static binary (`x86_64` and `arm64`) from the submodule source:
+```bash
+./build_hidapi.sh
+```
+
+### 2. Compile in Xcode
+1. Open `Dial.xcodeproj` in Xcode.
+2. Select the `Dial` target and choose your macOS destination.
+3. Build and Run (`Cmd + R`).
+
+### 🔑 Security & Permissions Note
+To synthesize global mouse and keyboard events, Dial requires **Accessibility Permissions**.
+- Upon the first launch, Dial will prompt you to grant Accessibility access in **System Settings > Privacy & Security > Accessibility**.
+- Because Dial interacts globally with user input, the App Sandbox is disabled (`com.apple.security.app-sandbox` is set to `false` in `Dial.entitlements`).
+
+---
+
+## 📦 Dependencies
+
+Dial stands on the shoulders of these incredible open-source projects:
+- [libusb/hidapi](https://github.com/libusb/hidapi) - Low-level HID device communications.
+- [sindresorhus/Defaults](https://github.com/sindresorhus/Defaults) - Elegant user defaults state management.
+- [sindresorhus/LaunchAtLogin](https://github.com/sindresorhus/LaunchAtLogin) - Seamless macOS auto-launch integration.
+- [orchetect/MenuBarExtraAccess](https://github.com/orchetect/MenuBarExtraAccess) - Advanced SwiftUI MenuBarExtra utility.
+- [orchetect/SettingsAccess](https://github.com/orchetect/SettingsAccess) - Direct access to App Settings.
+- [SFSafeSymbols/SFSafeSymbols](https://github.com/SFSafeSymbols/SFSafeSymbols) - Safe compile-time SF Symbols referencing.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
