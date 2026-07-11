@@ -89,6 +89,32 @@ Uses the lightweight `Defaults` library to manage state globally:
 
 ---
 
+## Installation
+
+You can install Dial using either of the following methods:
+
+### Method 1: Download from GitHub Releases
+1. Navigate to the Releases section of the repository.
+2. Download the latest `Dial.dmg` file.
+3. Double-click the downloaded `Dial.dmg` file to mount it.
+4. Drag `Dial.app` into your Applications folder.
+
+### Method 2: Install via Homebrew
+You can install Dial using Homebrew by referencing the `ho-ly-software/tap` tap directly:
+
+```bash
+brew install ho-ly-software/tap/dial
+```
+
+Alternatively, you can tap the repository first and then install:
+
+```bash
+brew tap ho-ly-software/tap
+brew install dial
+```
+
+---
+
 ## How to Build and Run
 
 To compile and launch Dial locally:
