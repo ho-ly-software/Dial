@@ -45,7 +45,8 @@ extension Defaults.Keys {
             .builtin(.scroll),
             .builtin(.playback),
             .builtin(.brightness),
-            .builtin(.mission)
+            .builtin(.zoom),
+            .builtin(.undoRedo)
         ])
     }()
     static let inactivatedControllerIDs: Key<[ControllerID]> = .init("inactivatedControllerIDs", default: [])
@@ -108,12 +109,13 @@ extension Defaults {
         }
     }
     
-    static func cycleControllers(_ sign: Int, wrap: Bool = false) {
+    static func cycleControllers(_ sign: Int, wrap: Bool = true) {
         guard sign != 0 else { return }
         guard let index = currentControllerIndex else { return }
         
         let cycledIndex = index + sign.signum()
         let count = Defaults[.activatedControllerIDs].count
+        guard count > 0 else { return }
         let inRange = (0..<count).contains(cycledIndex)
         
         if wrap || inRange {

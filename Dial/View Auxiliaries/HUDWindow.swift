@@ -9,11 +9,12 @@ import SwiftUI
 import AppKit
 import Defaults
 import SFSafeSymbols
+import Combine
 
 class HUDWindow: NSWindow {
     init() {
         super.init(
-            contentRect: NSRect(x: 0, y: 0, width: 180, height: 180),
+            contentRect: NSRect(x: 0, y: 0, width: 220, height: 220),
             styleMask: [.borderless, .fullSizeContentView],
             backing: .buffered,
             defer: false
@@ -40,6 +41,7 @@ class HUDManager {
     
     private var window: HUDWindow?
     private var fadeOutWorkItem: DispatchWorkItem?
+    private var cancellables = Set<AnyCancellable>()
     
     init() {
         Task { @MainActor in
@@ -62,6 +64,24 @@ class HUDManager {
                 self.showHUD(for: id.controller)
             }
         }
+        
+        MainController.instance.$state
+            .receive(on: RunLoop.main)
+            .sink { [weak self] state in
+                self?.handleStateChange(state)
+            }
+            .store(in: &cancellables)
+    }
+    
+    @MainActor
+    private func handleStateChange(_ state: MainController.State) {
+        if state.isAgent {
+            if let current = Defaults.currentController {
+                self.showHUD(for: current)
+            }
+        } else {
+            self.scheduleFadeOut()
+        }
     }
     
     @MainActor
@@ -77,10 +97,18 @@ class HUDManager {
         if let screen = NSScreen.main {
             let screenRect = screen.frame
             let windowRect = window.frame
-            let newOrigin = NSPoint(
+            var newOrigin = NSPoint(
                 x: screenRect.origin.x + (screenRect.width - windowRect.width) / 2,
                 y: screenRect.origin.y + (screenRect.height - windowRect.height) / 5
             )
+            
+            if Defaults[.dialMenuAppearsAtCursor] {
+                let mouseLoc = NSEvent.mouseLocation
+                newOrigin = NSPoint(
+                    x: mouseLoc.x - windowRect.width / 2,
+                    y: mouseLoc.y - windowRect.height / 2
+                )
+            }
             window.setFrameOrigin(newOrigin)
         }
         
@@ -96,7 +124,16 @@ class HUDManager {
             window.animator().alphaValue = 1.0
         }
         
-        // Schedule fade out
+        // Schedule fade out only if not in selection mode (Agent Mode)
+        if !MainController.instance.isAgent {
+            scheduleFadeOut()
+        }
+    }
+    
+    @MainActor
+    private func scheduleFadeOut() {
+        fadeOutWorkItem?.cancel()
+        
         let workItem = DispatchWorkItem { [weak self] in
             guard let self = self else { return }
             Task { @MainActor in
@@ -124,23 +161,80 @@ class HUDManager {
 struct HUDContentView: View {
     let controller: Controller
     
+    @Default(.activatedControllerIDs) var activatedControllerIDs
+    @Default(.currentControllerID) var currentControllerID
+    @Default(.dialMenuThickness) var dialMenuThickness
+    @Default(.dialMenuAnimation) var dialMenuAnimation
+    
+    private var radius: CGFloat {
+        45 + dialMenuThickness.value
+    }
+    
     var body: some View {
-        VStack(spacing: 12) {
-            Image(systemSymbol: controller.symbol)
-                .font(.system(size: 64, weight: .regular))
-                .foregroundColor(.primary)
+        let activeIndex = activatedControllerIDs.firstIndex(of: currentControllerID ?? .builtin(.scroll)) ?? 0
+        let count = activatedControllerIDs.count
+        let activeAngle = count > 0 ? (360.0 * Double(activeIndex) / Double(count)) : 0.0
+        
+        ZStack {
+            // Subtle track stroke
+            Circle()
+                .stroke(Color.primary.opacity(0.08), lineWidth: 1)
+                .frame(width: radius * 2, height: radius * 2)
             
-            Text(controller.name ?? controllerNamePlaceholder)
-                .font(.system(size: 18, weight: .semibold))
-                .foregroundColor(.primary)
-                .multilineTextAlignment(.center)
-                .lineLimit(2)
+            // Highlight circle
+            if count > 0 {
+                Circle()
+                    .fill(Color.primary.opacity(0.15))
+                    .frame(width: 32, height: 32)
+                    .rotationEffect(.degrees(activeAngle))
+                    .offset(y: -radius)
+                    .rotationEffect(.degrees(-activeAngle))
+                    .animation(dialMenuAnimation.value, value: activeAngle)
+            }
+            
+            // Outer Icons distributed along the track
+            ForEach(0..<count, id: \.self) { index in
+                let id = activatedControllerIDs[index]
+                let angle = 360.0 * Double(index) / Double(count)
+                
+                Image(systemSymbol: id.controller.symbol)
+                    .font(.system(size: 16, weight: .regular))
+                    .foregroundColor(index == activeIndex ? .primary : .secondary)
+                    .frame(width: 32, height: 32)
+                    .rotationEffect(.degrees(angle))
+                    .offset(y: -radius)
+                    .rotationEffect(.degrees(-angle))
+            }
+            
+            // Center Area
+            VStack(spacing: 8) {
+                Image(systemSymbol: controller.symbol)
+                    .font(.system(size: 48, weight: .regular))
+                    .foregroundColor(.primary)
+                
+                Text(controller.name ?? controllerNamePlaceholder)
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(.primary)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .frame(width: 110)
+            }
         }
-        .padding(24)
-        .frame(width: 180, height: 180)
-        .background(
-            VisualEffectView(material: .hudWindow, blendingMode: .behindWindow)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .frame(width: 220, height: 220)
+        .hudBackground()
+    }
+}
+
+extension View {
+    @ViewBuilder
+    func hudBackground() -> some View {
+        if #available(macOS 26.0, *) {
+            self.glassEffect(in: Circle())
+                .overlay(Circle().stroke(Color.primary.opacity(0.15), lineWidth: 1))
+        } else {
+            self.background(.ultraThinMaterial)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.primary.opacity(0.15), lineWidth: 1))
+        }
     }
 }

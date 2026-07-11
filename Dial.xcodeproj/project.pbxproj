@@ -11,8 +11,9 @@
 		2806E9C12BAC5E6D00CD2AE2 /* ScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806E9C02BAC5E6D00CD2AE2 /* ScrollController.swift */; };
 		2806E9C32BAC5EAF00CD2AE2 /* PlaybackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806E9C22BAC5EAF00CD2AE2 /* PlaybackController.swift */; };
 		2806E9C52BAC5ED600CD2AE2 /* BrigntnessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806E9C42BAC5ED600CD2AE2 /* BrigntnessController.swift */; };
-		2806E9C72BAC5EFD00CD2AE2 /* MissionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806E9C62BAC5EFD00CD2AE2 /* MissionController.swift */; };
+		2806E9C72BAC5EFD00CD2AE2 /* ZoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806E9C62BAC5EFD00CD2AE2 /* ZoomController.swift */; };
 		2806E9C92BAC6A6600CD2AE2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2806E9C82BAC6A6600CD2AE2 /* Localizable.xcstrings */; };
+		2806E9EF2BAC5EFD00CD2AE2 /* UndoRedoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806E9EE2BAC5EFD00CD2AE2 /* UndoRedoController.swift */; };
 		2821DA782BAEE8250017B5DD /* ObservationTrackingStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2821DA772BAEE8250017B5DD /* ObservationTrackingStream.swift */; };
 		2821DA7A2BAEF60B0017B5DD /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2821DA792BAEF60B0017B5DD /* View+Extension.swift */; };
 		2821DA7D2BAF1AD20017B5DD /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 2821DA7C2BAF1AD20017B5DD /* LaunchAtLogin */; };
@@ -33,22 +34,16 @@
 		2887D7872BAC00AF00D733FC /* ShortcutsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887D7862BAC00AF00D733FC /* ShortcutsController.swift */; };
 		2887D7892BAC011300D733FC /* ShortcutArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887D7882BAC011300D733FC /* ShortcutArray.swift */; };
 		2887D78B2BAC013300D733FC /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2887D78A2BAC013300D733FC /* Input.swift */; };
-		289B83FC2BADB9DA00D56D43 /* ConnectViaBluetoothTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B83FB2BADB9DA00D56D43 /* ConnectViaBluetoothTip.swift */; };
 		289B83FE2BADC44D00D56D43 /* PermissionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B83FD2BADC44D00D56D43 /* PermissionsManager.swift */; };
 		289B84002BADC4F900D56D43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B83FF2BADC4F900D56D43 /* AppDelegate.swift */; };
-		28AC22182BB1C14C00ADA343 /* ApplicationDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AC22172BB1C14C00ADA343 /* ApplicationDataView.swift */; };
 		28DC1B642BB8082100EBE057 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC1B632BB8082100EBE057 /* EventMonitor.swift */; };
 		28DC1B662BB8101500EBE057 /* ModifierFlags+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC1B652BB8101500EBE057 /* ModifierFlags+Extensions.swift */; };
 		28DC1B682BB81F9300EBE057 /* ControllerDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC1B672BB81F9300EBE057 /* ControllerDescription.swift */; };
-		28E71A362BAFCE9500722045 /* ShrinkableEqualWidthVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71A352BAFCE9500722045 /* ShrinkableEqualWidthVStack.swift */; };
-		28E71A392BAFD57300722045 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71A382BAFD57300722045 /* AboutViewController.swift */; };
 		28E71A3B2BAFD57800722045 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71A3A2BAFD57800722045 /* AboutView.swift */; };
-		28E71A3D2BAFD80D00722045 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71A3C2BAFD80D00722045 /* VisualEffectView.swift */; };
 		28E71A3F2BAFDA3700722045 /* AppVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71A3E2BAFDA3700722045 /* AppVersionView.swift */; };
 		28E71A412BAFDAE800722045 /* AcknowledgementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71A402BAFDAE800722045 /* AcknowledgementsView.swift */; };
 		28E71A432BAFDAEA00722045 /* HUDWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71A422BAFDAEA00722045 /* HUDWindow.swift */; };
 		28EE29B02BAB2155009005C3 /* DialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EE29AF2BAB2155009005C3 /* DialApp.swift */; };
-		28EE29B72BAB2156009005C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28EE29B62BAB2156009005C3 /* Preview Assets.xcassets */; };
 		28EE29CB2BAB2234009005C3 /* SettingsAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 28EE29CA2BAB2234009005C3 /* SettingsAccess */; };
 		28EE29CE2BAB2245009005C3 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 28EE29CD2BAB2245009005C3 /* Defaults */; };
 		28EE29D12BAB2258009005C3 /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 28EE29D02BAB2258009005C3 /* SFSafeSymbols */; };
@@ -60,8 +55,9 @@
 		2806E9C02BAC5E6D00CD2AE2 /* ScrollController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollController.swift; sourceTree = "<group>"; };
 		2806E9C22BAC5EAF00CD2AE2 /* PlaybackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackController.swift; sourceTree = "<group>"; };
 		2806E9C42BAC5ED600CD2AE2 /* BrigntnessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrigntnessController.swift; sourceTree = "<group>"; };
-		2806E9C62BAC5EFD00CD2AE2 /* MissionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionController.swift; sourceTree = "<group>"; };
+		2806E9C62BAC5EFD00CD2AE2 /* ZoomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomController.swift; sourceTree = "<group>"; };
 		2806E9C82BAC6A6600CD2AE2 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		2806E9EE2BAC5EFD00CD2AE2 /* UndoRedoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoRedoController.swift; sourceTree = "<group>"; };
 		2821DA772BAEE8250017B5DD /* ObservationTrackingStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationTrackingStream.swift; sourceTree = "<group>"; };
 		2821DA792BAEF60B0017B5DD /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		2831AD8A2BAF9B8B0064821C /* MenuBarMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarMenuView.swift; sourceTree = "<group>"; };
@@ -82,23 +78,17 @@
 		2887D7862BAC00AF00D733FC /* ShortcutsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsController.swift; sourceTree = "<group>"; };
 		2887D7882BAC011300D733FC /* ShortcutArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutArray.swift; sourceTree = "<group>"; };
 		2887D78A2BAC013300D733FC /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
-		289B83FB2BADB9DA00D56D43 /* ConnectViaBluetoothTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViaBluetoothTip.swift; sourceTree = "<group>"; };
 		289B83FD2BADC44D00D56D43 /* PermissionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsManager.swift; sourceTree = "<group>"; };
 		289B83FF2BADC4F900D56D43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		28AC22172BB1C14C00ADA343 /* ApplicationDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDataView.swift; sourceTree = "<group>"; };
 		28DC1B632BB8082100EBE057 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		28DC1B652BB8101500EBE057 /* ModifierFlags+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModifierFlags+Extensions.swift"; sourceTree = "<group>"; };
 		28DC1B672BB81F9300EBE057 /* ControllerDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerDescription.swift; sourceTree = "<group>"; };
-		28E71A352BAFCE9500722045 /* ShrinkableEqualWidthVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShrinkableEqualWidthVStack.swift; sourceTree = "<group>"; };
-		28E71A382BAFD57300722045 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		28E71A3A2BAFD57800722045 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		28E71A3C2BAFD80D00722045 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		28E71A3E2BAFDA3700722045 /* AppVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionView.swift; sourceTree = "<group>"; };
 		28E71A402BAFDAE800722045 /* AcknowledgementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsView.swift; sourceTree = "<group>"; };
 		28E71A422BAFDAEA00722045 /* HUDWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDWindow.swift; sourceTree = "<group>"; };
 		28EE29AC2BAB2155009005C3 /* Dial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28EE29AF2BAB2155009005C3 /* DialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialApp.swift; sourceTree = "<group>"; };
-		28EE29B62BAB2156009005C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		28EE29B82BAB2156009005C3 /* Dial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dial.entitlements; sourceTree = "<group>"; };
 		647F5CCE300197C5000BF082 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,7 +116,8 @@
 				2806E9C02BAC5E6D00CD2AE2 /* ScrollController.swift */,
 				2806E9C22BAC5EAF00CD2AE2 /* PlaybackController.swift */,
 				2806E9C42BAC5ED600CD2AE2 /* BrigntnessController.swift */,
-				2806E9C62BAC5EFD00CD2AE2 /* MissionController.swift */,
+				2806E9C62BAC5EFD00CD2AE2 /* ZoomController.swift */,
+				2806E9EE2BAC5EFD00CD2AE2 /* UndoRedoController.swift */,
 			);
 			path = Builtin;
 			sourceTree = "<group>";
@@ -189,31 +180,12 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		289B83FA2BADB9C400D56D43 /* Tips */ = {
-			isa = PBXGroup;
-			children = (
-				289B83FB2BADB9DA00D56D43 /* ConnectViaBluetoothTip.swift */,
-			);
-			path = Tips;
-			sourceTree = "<group>";
-		};
-		28AC22162BB1C12D00ADA343 /* Fundamentals */ = {
-			isa = PBXGroup;
-			children = (
-				28E71A352BAFCE9500722045 /* ShrinkableEqualWidthVStack.swift */,
-			);
-			path = Fundamentals;
-			sourceTree = "<group>";
-		};
 		28E71A342BAFCE4200722045 /* View Auxiliaries */ = {
 			isa = PBXGroup;
 			children = (
-				28AC22162BB1C12D00ADA343 /* Fundamentals */,
 				28E71A372BAFD56900722045 /* About View */,
-				28E71A3C2BAFD80D00722045 /* VisualEffectView.swift */,
 				28E71A422BAFDAEA00722045 /* HUDWindow.swift */,
 				28E71A3E2BAFDA3700722045 /* AppVersionView.swift */,
-				28AC22172BB1C14C00ADA343 /* ApplicationDataView.swift */,
 			);
 			path = "View Auxiliaries";
 			sourceTree = "<group>";
@@ -221,7 +193,6 @@
 		28E71A372BAFD56900722045 /* About View */ = {
 			isa = PBXGroup;
 			children = (
-				28E71A382BAFD57300722045 /* AboutViewController.swift */,
 				28E71A3A2BAFD57800722045 /* AboutView.swift */,
 				28E71A402BAFDAE800722045 /* AcknowledgementsView.swift */,
 			);
@@ -256,22 +227,12 @@
 				2887D7772BABFD2A00D733FC /* Utilities */,
 				28E71A342BAFCE4200722045 /* View Auxiliaries */,
 				286971112BAB2D550074C2FB /* Menu Bar */,
-				289B83FA2BADB9C400D56D43 /* Tips */,
 				286971162BAB2F5F0074C2FB /* Extensions */,
-				28EE29B52BAB2156009005C3 /* Preview Content */,
 				28EE29B82BAB2156009005C3 /* Dial.entitlements */,
 				2806E9C82BAC6A6600CD2AE2 /* Localizable.xcstrings */,
 				283856E52BB028A500860E7C /* Info.plist */,
 			);
 			path = Dial;
-			sourceTree = "<group>";
-		};
-		28EE29B52BAB2156009005C3 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				28EE29B62BAB2156009005C3 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,7 +271,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 2700;
 				TargetAttributes = {
 					28EE29AB2BAB2155009005C3 = {
 						CreatedOnToolsVersion = 15.3;
@@ -348,7 +309,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28EE29B72BAB2156009005C3 /* Preview Assets.xcassets in Resources */,
 				2806E9C92BAC6A6600CD2AE2 /* Localizable.xcstrings in Resources */,
 				647F5CCF300197C5000BF082 /* AppIcon.icon in Resources */,
 			);
@@ -385,17 +345,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2887D76F2BABFBD100D733FC /* SFSymbol+Extension.swift in Sources */,
-				28E71A392BAFD57300722045 /* AboutViewController.swift in Sources */,
 				28E71A3B2BAFD57800722045 /* AboutView.swift in Sources */,
 				28E71A3F2BAFDA3700722045 /* AppVersionView.swift in Sources */,
 				289B83FE2BADC44D00D56D43 /* PermissionsManager.swift in Sources */,
 				2887D77D2BABFE8900D733FC /* SurfaceDial.swift in Sources */,
 				2887D7712BABFBFF00D733FC /* NSString+Extension.swift in Sources */,
-				28E71A3D2BAFD80D00722045 /* VisualEffectView.swift in Sources */,
 				28DC1B642BB8082100EBE057 /* EventMonitor.swift in Sources */,
-				28AC22182BB1C14C00ADA343 /* ApplicationDataView.swift in Sources */,
 				2887D76D2BABFB9800D733FC /* NSImage+Extension.swift in Sources */,
-				289B83FC2BADB9DA00D56D43 /* ConnectViaBluetoothTip.swift in Sources */,
 				2806E9BE2BAC5C8800CD2AE2 /* Date+Extension.swift in Sources */,
 				2887D7892BAC011300D733FC /* ShortcutArray.swift in Sources */,
 				2887D7762BABFD2200D733FC /* Hardware.swift in Sources */,
@@ -412,7 +368,6 @@
 				28DC1B662BB8101500EBE057 /* ModifierFlags+Extensions.swift in Sources */,
 				2806E9C52BAC5ED600CD2AE2 /* BrigntnessController.swift in Sources */,
 				2821DA782BAEE8250017B5DD /* ObservationTrackingStream.swift in Sources */,
-				28E71A362BAFCE9500722045 /* ShrinkableEqualWidthVStack.swift in Sources */,
 				2887D78B2BAC013300D733FC /* Input.swift in Sources */,
 				28DC1B682BB81F9300EBE057 /* ControllerDescription.swift in Sources */,
 				2887D7872BAC00AF00D733FC /* ShortcutsController.swift in Sources */,
@@ -420,7 +375,8 @@
 				2887D7832BAC005200D733FC /* MainController.swift in Sources */,
 				2831AD8B2BAF9B8B0064821C /* MenuBarMenuView.swift in Sources */,
 				2887D7792BABFD4E00D733FC /* SymbolRepresentable.swift in Sources */,
-				2806E9C72BAC5EFD00CD2AE2 /* MissionController.swift in Sources */,
+				2806E9C72BAC5EFD00CD2AE2 /* ZoomController.swift in Sources */,
+				2806E9EF2BAC5EFD00CD2AE2 /* UndoRedoController.swift in Sources */,
 				28EE29B02BAB2155009005C3 /* DialApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +389,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -463,7 +420,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = SMHW3JW3Z8;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -487,6 +446,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Dial-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -498,6 +458,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -528,7 +489,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = SMHW3JW3Z8;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -545,6 +508,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "Dial-Bridging-Header.h";
 			};
@@ -561,10 +525,9 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Dial/Preview Content\"";
-				DEVELOPMENT_TEAM = SMHW3JW3Z8;
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -581,7 +544,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/lib/hidapi/build/src/mac";
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_LDFLAGS = "-lhidapi";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ho-ly.dial";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -602,10 +565,9 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"Dial/Preview Content\"";
-				DEVELOPMENT_TEAM = SMHW3JW3Z8;
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -623,7 +585,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/lib/hidapi/build/src/mac";
 				"LIBRARY_SEARCH_PATHS[arch=x86_64]" = "$(SRCROOT)/lib/hidapi/build_x86/src/mac";
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_LDFLAGS = "-lhidapi";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ho-ly.dial";
 				PRODUCT_NAME = "$(TARGET_NAME)";

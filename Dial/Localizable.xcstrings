@@ -18,6 +18,9 @@
         }
       }
     },
+    "About %@" : {
+
+    },
     "About %@…" : {
       "localizations" : {
         "zh-Hans" : {
@@ -30,7 +33,7 @@
     },
     "About View Controller: Title" : {
       "comment" : "about view controller title",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -135,6 +138,7 @@
       }
     },
     "Are You Sure to Reset All Controllers Data?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -145,6 +149,7 @@
       }
     },
     "Are You Sure to Reset All Global Configurations?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -242,6 +247,7 @@
       }
     },
     "Connect via Bluetooth" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -290,6 +296,7 @@
       }
     },
     "Controllers Data" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -402,17 +409,17 @@
       }
     },
     "Controllers/Builtin/Mission: Abstraction" : {
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "You can iterate through App Switcher and activate app windows through this controller."
+            "value" : "You can navigate through desktop spaces and trigger Mission Control or App Exposé."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "通过此控制器，你可以循环查看并激活应用切换器中的应用。"
           }
         }
@@ -571,6 +578,94 @@
         }
       }
     },
+    "Controllers/Builtin/UndoRedo: Abstraction" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You can perform undo and redo actions."
+          }
+        }
+      }
+    },
+    "Controllers/Builtin/UndoRedo: Press" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Undo."
+          }
+        }
+      }
+    },
+    "Controllers/Builtin/UndoRedo: Rotate Clockwisely" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Redo."
+          }
+        }
+      }
+    },
+    "Controllers/Builtin/UndoRedo: Rotate Counterclockwisely" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Undo."
+          }
+        }
+      }
+    },
+    "Controllers/Builtin/Zoom: Abstraction" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "You can zoom in and out or reset to actual size."
+          }
+        }
+      }
+    },
+    "Controllers/Builtin/Zoom: Press" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reset zoom to actual size."
+          }
+        }
+      }
+    },
+    "Controllers/Builtin/Zoom: Rotate Clockwisely" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Zoom in."
+          }
+        }
+      }
+    },
+    "Controllers/Builtin/Zoom: Rotate Counterclockwisely" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Zoom out."
+          }
+        }
+      }
+    },
     "Controllers/Default/Brigshtnes: Name" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -600,7 +695,7 @@
       }
     },
     "Controllers/Default/Mission: Name" : {
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -646,6 +741,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "滚动"
+          }
+        }
+      }
+    },
+    "Controllers/Default/UndoRedo: Name" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Undo / Redo"
+          }
+        }
+      }
+    },
+    "Controllers/Default/Zoom: Name" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Zoom"
           }
         }
       }
@@ -891,6 +1008,7 @@
       }
     },
     "Discover and connect to your device in Settings app so that %@ is able to take charge of it. Click the reconnect button when your device is ready." : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -966,6 +1084,7 @@
       }
     },
     "Global Configurations" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1094,6 +1213,28 @@
         }
       }
     },
+    "Menu: Menu Animation" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Menu Animation"
+          }
+        }
+      }
+    },
+    "Menu: Menu Thickness" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Menu Thickness"
+          }
+        }
+      }
+    },
     "Menu: Sensitivity" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -1107,6 +1248,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "敏感度"
+          }
+        }
+      }
+    },
+    "Menu: Show Menu at Cursor Position" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Menu at Cursor Position"
           }
         }
       }
@@ -1182,7 +1334,11 @@
         }
       }
     },
+    "On-Screen Dial Menu" : {
+
+    },
     "Open in Settings" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1332,6 +1488,7 @@
       }
     },
     "Reset" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {

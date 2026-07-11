@@ -13,12 +13,7 @@ struct AppVersionView: View {
             Text("Version \(Bundle.main.appVersion) (\(Bundle.main.appBuild))")
             
             Button(action: {
-                let pasteboard = NSPasteboard.general
-                pasteboard.clearContents()
-                pasteboard.setString(
-                    "\(Bundle.main.appVersion) (\(Bundle.main.appBuild))",
-                    forType: NSPasteboard.PasteboardType.string
-                )
+                copyToClipboard("\(Bundle.main.appVersion) (\(Bundle.main.appBuild))")
             }, label: {
                 Image(systemSymbol: .clipboardFill)
             })

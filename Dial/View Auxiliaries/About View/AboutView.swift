@@ -73,12 +73,7 @@ struct AboutView: View {
         }
         .padding(20)
         .frame(width: 260, height: 380)
-        .background {
-            VisualEffectView(
-                material: .hudWindow,
-                blendingMode: .behindWindow
-            ).ignoresSafeArea()
-        }
+        .background(.ultraThinMaterial)
     }
 }
 

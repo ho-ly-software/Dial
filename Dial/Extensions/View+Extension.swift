@@ -7,8 +7,15 @@
 
 import Foundation
 import SwiftUI
+import AppKit
 
 extension View {
+    func copyToClipboard(_ string: String) {
+        let pasteboard = NSPasteboard.general
+        pasteboard.clearContents()
+        pasteboard.setString(string, forType: .string)
+    }
+    
     func or(condition: Bool, _ another: () -> Self) -> Self {
         condition ? another() : self
     }

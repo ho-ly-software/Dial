@@ -234,6 +234,12 @@ extension DialMenuThickness: Localizable {
     }
 }
 
+extension DialMenuThickness: Identifiable {
+    var id: Self {
+        self
+    }
+}
+
 enum DialMenuAnimation: CaseIterable, Codable, Defaults.Serializable {
     case none
     case linear
@@ -308,6 +314,12 @@ extension DialMenuAnimation: Localizable {
         case .interpolativeSpring:
                 .init(localized: .init("Dial Menu Animation: Interpolative Spring", defaultValue: "Interpolative Spring"))
         }
+    }
+}
+
+extension DialMenuAnimation: Identifiable {
+    var id: Self {
+        self
     }
 }
 

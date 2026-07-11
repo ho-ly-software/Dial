@@ -10,6 +10,11 @@ import AppKit
 import Defaults
 import SFSafeSymbols
 import SwiftUI
+import UniformTypeIdentifiers
+
+extension UTType {
+    static var controllerID: UTType { UTType(exportedAs: "dial.controllerID") }
+}
 
 enum ControllerID: Codable, Hashable, Defaults.Serializable, Equatable {
     enum Builtin: CaseIterable, Codable {
@@ -21,7 +26,9 @@ enum ControllerID: Codable, Hashable, Defaults.Serializable, Equatable {
         
         case brightness
         
-        case mission
+        case zoom
+        
+        case undoRedo
         
         var controller: Controller {
             switch self {
@@ -33,8 +40,10 @@ enum ControllerID: Codable, Hashable, Defaults.Serializable, Equatable {
                 PlaybackController.instance
             case .brightness:
                 BrightnessController.instance
-            case .mission:
-                MissionController.instance
+            case .zoom:
+                ZoomController.instance
+            case .undoRedo:
+                UndoRedoController.instance
             }
         }
         

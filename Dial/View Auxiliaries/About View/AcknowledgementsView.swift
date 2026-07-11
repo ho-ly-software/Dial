@@ -92,10 +92,7 @@ struct AcknowledgementsView: View {
                 buildAcknowledgements(packages: dependencies)
             }
             .padding()
-            .background {
-                VisualEffectView(material: .fullScreenUI, blendingMode: .behindWindow)
-                    .ignoresSafeArea(.all)
-            }
+            .background(.ultraThinMaterial)
             
             VStack {
                 Text("Special Thanks")
