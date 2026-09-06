@@ -16,7 +16,7 @@ class PermissionsManager {
     class Accessibility {
         static func getStatus() -> Bool {
             // Get current state for accessibility access
-            let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeRetainedValue() as NSString: false]
+            let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as NSString: false]
             let status = AXIsProcessTrustedWithOptions(options)
             
             return status
@@ -50,7 +50,7 @@ If you're updating, you might have to remove %@ from the list before re-granting
             
             alert.runModal()
             
-            let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeRetainedValue() as NSString: true]
+            let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as NSString: true]
             let status = AXIsProcessTrustedWithOptions(options)
             
             return status

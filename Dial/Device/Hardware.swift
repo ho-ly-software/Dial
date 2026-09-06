@@ -7,6 +7,7 @@
 
 import Foundation
 import Defaults
+import IOKit.hid
 
 protocol InputHandler {
     func onButtonStateChanged(_ buttonState: Hardware.ButtonState)
@@ -14,15 +15,6 @@ protocol InputHandler {
 }
 
 @Observable class Hardware {
-    private struct ReadBuffer {
-        let pointer: UnsafeMutablePointer<UInt8>
-        let size: Int
-        init(size: Int) {
-            self.size = size
-            pointer = UnsafeMutablePointer<UInt8>.allocate(capacity: size)
-        }
-    }
-    
     // MARK: Product identifiers for Surface Dials
     static let vendorId: UInt16 = 0x045E
     static let productId: UInt16 = 0x091B
@@ -32,22 +24,17 @@ protocol InputHandler {
     var lastButtonState: ButtonState = .released
     var inputHandler: InputHandler?
     
-    private var dev: OpaquePointer?
-    private let readBuffer = ReadBuffer(size: 1024)
-    private var thread: Thread?
-    private var isRunning: Bool = false
-    private let semaphore = DispatchSemaphore(value: 0)
+    private var manager: IOHIDManager?
+    private var device: IOHIDDevice?
     
     deinit {
         stop()
-        hid_exit()
     }
 }
 
 extension Hardware {
     enum ConnectionStatus {
         case connected(String)
-        
         case disconnected
         
         var isConnected: Bool {
@@ -62,241 +49,197 @@ extension Hardware {
     
     enum HapticsMode: UInt8 {
         case none = 0x02
-        
         case buzz = 0x03
-        
         case continuous = 0x04
-    }
-    
-    enum InputReport {
-        case dial(ButtonState, Direction?)
-        
-        case unknown
-        
-        var debugMessage: String? {
-            switch self {
-            case .unknown:
-                "(unknown)"
-            default:
-                nil
-            }
-        }
     }
     
     enum ButtonState {
         case pressed
-        
         case released
     }
 }
 
 extension Hardware {
     var isConnected: Bool {
-        dev != nil
+        device != nil
     }
     
     var manufacturer: String {
-        get {
-            guard let dev = self.dev else {
-                return ""
-            }
-            
-            let buffer = UnsafeMutablePointer<wchar_t>.allocate(capacity: 255)
-            hid_get_manufacturer_string(dev, buffer, 255)
-            
-            return NSString(wcharArray: buffer) as String
-        }
+        guard let device = self.device else { return "" }
+        return (IOHIDDeviceGetProperty(device, kIOHIDManufacturerKey as CFString) as? String) ?? ""
     }
     
     var serialNumber: String {
-        get {
-            guard let dev = self.dev else {
-                return ""
-            }
-            
-            let buffer = UnsafeMutablePointer<wchar_t>.allocate(capacity: 255)
-            hid_get_serial_number_string(dev, buffer, 255)
-            
-            return NSString(wcharArray: buffer) as String
-        }
+        guard let device = self.device else { return "" }
+        return (IOHIDDeviceGetProperty(device, kIOHIDSerialNumberKey as CFString) as? String) ?? ""
     }
     
-    @discardableResult
-    private func connect() -> Bool {
-        dev = hid_open(Hardware.vendorId, Hardware.productId, nil)
-        
-        if isConnected {
-            print("Connected to device \(serialNumber)!")
-            
-            connectionStatus = .connected(serialNumber)
-            buzz(3)
-            initSensitivity(autoTriggers: Defaults.currentController?.autoTriggers ?? false)
-        }
-        
-        return isConnected
-    }
-    
-    private func disconnect() {
-        if let dev = self.dev {
-            print("Device disconnected.")
-            
-            // TODO: EXC_BAD_ACCESS, why?
-            //hid_close(dev)
-            
-            self.dev = nil
-            connectionStatus = .disconnected
-            initSensitivity(autoTriggers: false)
-        }
-    }
-    
-    // https://github.com/daniel5151/surface-dial-linux/blob/main/src/dial_device/haptics.rs
     func initSensitivity(autoTriggers haptics: Bool) {
-        if isConnected {
-            let autoTriggers = haptics && !MainController.instance.isAgent
-            let steps_lo = 360 & 0xff
-            let steps_hi = (360 >> 8) & 0xff
-            var buf: Array<UInt8> = []
-            
-            buf.append(0x01) // Report ID
-            buf.append(UInt8(steps_lo))
-            buf.append(UInt8(steps_hi))
-            buf.append(0x00) // Repeat count
-            
-            buf.append(autoTriggers ? 0x03 : 0x02) // Buzz style
-            
-            buf.append(0x00) // Waveform cutoff time
-            buf.append(0x00) // Retrigger period (lo)
-            buf.append(0x00) // Retrigger period (hi)
-            
-            hid_send_feature_report(dev, buf, 8)
+        guard isConnected, let device = self.device else { return }
+        let autoTriggers = haptics && !MainController.instance.isAgent
+        let steps_lo = 360 & 0xff
+        let steps_hi = (360 >> 8) & 0xff
+        var buf: [UInt8] = []
+        
+        buf.append(0x01) // Report ID
+        buf.append(UInt8(steps_lo))
+        buf.append(UInt8(steps_hi))
+        buf.append(0x00) // Repeat count
+        buf.append(autoTriggers ? 0x03 : 0x02) // Buzz style
+        buf.append(0x00) // Waveform cutoff time
+        buf.append(0x00) // Retrigger period (lo)
+        buf.append(0x00) // Retrigger period (hi)
+        
+        buf.withUnsafeBufferPointer { ptr in
+            guard let baseAddress = ptr.baseAddress else { return }
+            IOHIDDeviceSetReport(device, kIOHIDReportTypeFeature, CFIndex(buf[0]), baseAddress, buf.count)
         }
     }
     
     func buzz(_ repeatCount: UInt8 = 1) {
         guard repeatCount > 0 else { return }
         
-        if Defaults[.globalHapticsEnabled] && isConnected {
-            var buf: Array<UInt8> = []
+        if Defaults[.globalHapticsEnabled], isConnected, let device = self.device {
+            var buf: [UInt8] = []
             
             buf.append(0x01) // Report ID
             buf.append(repeatCount - 1) // Repeat count
-            
             buf.append(HapticsMode.buzz.rawValue) // Buzz
-            
             buf.append(0x00) // Retrigger period (lo)
             buf.append(0x00) // Retrigger period (hi)
             
-            hid_write(dev, buf, 5)
+            buf.withUnsafeBufferPointer { ptr in
+                guard let baseAddress = ptr.baseAddress else { return }
+                IOHIDDeviceSetReport(device, kIOHIDReportTypeOutput, CFIndex(buf[0]), baseAddress, buf.count)
+            }
         }
     }
     
-    private func parse(_ bytes: UnsafeMutableBufferPointer<UInt8>) -> InputReport {
-        switch bytes[0] {
-        case 0x01 where bytes.count >= 4:
-            let buttonState = bytes[1] & 0x01 == 0x01 ? ButtonState.pressed : .released
-            let hasRotation = bytes[2] != 0x00
-            var direction: Direction?
-            
+    func handleInputReport(reportID: UInt32, report: UnsafeMutablePointer<UInt8>, length: CFIndex) {
+        guard length > 0 else { return }
+        let buffer = UnsafeBufferPointer(start: report, count: Int(length))
+        
+        var buttonState: ButtonState?
+        var direction: Direction?
+        
+        if buffer.count >= 4 && buffer[0] == 0x01 {
+            buttonState = (buffer[1] & 0x01 == 0x01) ? .pressed : .released
+            let hasRotation = buffer[2] != 0x00
             if hasRotation {
-                direction = switch bytes[3] {
-                case 0x00:
-                        .clockwise
+                direction = switch buffer[3] {
+                case 0x00, 0x01:
+                    .clockwise
                 case 0xff:
-                        .counterclockwise
+                    .counterclockwise
                 default:
                     nil
                 }
             }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { // Hack
-                self.buttonState = buttonState
+        } else if buffer.count >= 3 && (reportID == 1 || buffer[0] <= 1) {
+            buttonState = (buffer[0] & 0x01 == 0x01) ? .pressed : .released
+            let hasRotation = buffer[1] != 0x00
+            if hasRotation {
+                direction = switch buffer[2] {
+                case 0x00, 0x01:
+                    .clockwise
+                case 0xff:
+                    .counterclockwise
+                default:
+                    nil
+                }
             }
-            
-            return .dial(buttonState, direction?.multiply(Defaults[.globalDirection]))
+        }
+        
+        guard let buttonState else { return }
+        let adjustedDirection = direction?.multiply(Defaults[.globalDirection])
+        
+        switch buttonState {
+        case .pressed where lastButtonState == .released:
+            inputHandler?.onButtonStateChanged(.pressed)
+        case .released where lastButtonState == .pressed:
+            inputHandler?.onButtonStateChanged(.released)
         default:
-            return .unknown
-        }
-    }
-    
-    func read() -> InputReport? {
-        guard let dev = self.dev else { return nil }
-        
-        let readBytes = hid_read(dev, readBuffer.pointer, readBuffer.size)
-        
-        if readBytes <= 0 {
-            disconnect()
-            return nil
+            break
         }
         
-        let array = UnsafeMutableBufferPointer(start: readBuffer.pointer, count: Int(readBytes))
-        let dataStr = array.map({ String(format:"%02X", $0)}).joined(separator: " ")
+        if let adjustedDirection {
+            inputHandler?.onRotation(adjustedDirection, buttonState)
+        }
         
-        let result = parse(array)
-        print("Reading data from device: \(dataStr)", result.debugMessage ?? "")
-        
-        return result
+        self.buttonState = buttonState
+        self.lastButtonState = buttonState
     }
 }
 
 extension Hardware {
     func start() {
-        self.thread = Thread(
-            target: self,
-            selector: #selector(threadProc(_:)),
-            object: nil
-        );
+        guard manager == nil else { return }
         
-        isRunning = true;
-        thread!.start()
-    }
-    
-    func stop() {
-        isRunning = false
+        let manager = IOHIDManagerCreate(kCFAllocatorDefault, IOOptionBits(kIOHIDOptionsTypeNone))
+        self.manager = manager
         
-        if let thread {
-            semaphore.signal()
-            disconnect()
-            
-            while !thread.isFinished {}
-            self.thread = nil
+        let matchingDict: [String: Any] = [
+            kIOHIDVendorIDKey: Int(Hardware.vendorId),
+            kIOHIDProductIDKey: Int(Hardware.productId)
+        ]
+        IOHIDManagerSetDeviceMatching(manager, matchingDict as CFDictionary)
+        
+        let context = Unmanaged.passUnretained(self).toOpaque()
+        
+        IOHIDManagerRegisterDeviceMatchingCallback(manager, { context, result, sender, device in
+            guard let context = context else { return }
+            let hardware = Unmanaged<Hardware>.fromOpaque(context).takeUnretainedValue()
+            hardware.deviceMatched(device)
+        }, context)
+        
+        IOHIDManagerRegisterDeviceRemovalCallback(manager, { context, result, sender, device in
+            guard let context = context else { return }
+            let hardware = Unmanaged<Hardware>.fromOpaque(context).takeUnretainedValue()
+            hardware.deviceRemoved(device)
+        }, context)
+        
+        IOHIDManagerRegisterInputReportCallback(manager, { context, result, sender, type, reportID, report, reportLength in
+            guard let context = context else { return }
+            let hardware = Unmanaged<Hardware>.fromOpaque(context).takeUnretainedValue()
+            hardware.handleInputReport(reportID: reportID, report: report, length: reportLength)
+        }, context)
+        
+        IOHIDManagerScheduleWithRunLoop(manager, CFRunLoopGetMain(), CFRunLoopMode.commonModes.rawValue)
+        let openResult = IOHIDManagerOpen(manager, IOOptionBits(kIOHIDOptionsTypeNone))
+        if openResult != kIOReturnSuccess {
+            print("IOHIDManagerOpen failed with error: \(openResult)")
         }
     }
     
-    @objc
-    private func threadProc(_ arg: NSObject) {
-        while isRunning {
-            if !isConnected {
-                print("Connecting to device...")
-                
-                if !connect() {
-                    print("Connection failed.")
-                }
-            }
-            
-            while isConnected {
-                switch read() {
-                case .dial(let buttonState, let direction):
-                    switch buttonState {
-                    case .pressed where lastButtonState == .released:
-                        inputHandler?.onButtonStateChanged(.pressed)
-                    case .released where lastButtonState == .pressed:
-                        inputHandler?.onButtonStateChanged(.released)
-                    default:
-                        break
-                    }
-                    
-                    if let direction {
-                        inputHandler?.onRotation(direction, buttonState)
-                    }
-                    
-                    self.lastButtonState = buttonState
-                default:
-                    break
-                }
-            }
-            
-            print("Waiting for 60 seconds before next try.")
-            let _ = semaphore.wait(timeout: .now().advanced(by: .seconds(60)))
+    func stop() {
+        if let manager {
+            IOHIDManagerUnscheduleFromRunLoop(manager, CFRunLoopGetMain(), CFRunLoopMode.commonModes.rawValue)
+            IOHIDManagerClose(manager, IOOptionBits(kIOHIDOptionsTypeNone))
+            self.manager = nil
+        }
+        self.device = nil
+        self.connectionStatus = .disconnected
+        self.buttonState = .released
+        self.lastButtonState = .released
+    }
+    
+    private func deviceMatched(_ device: IOHIDDevice) {
+        self.device = device
+        let serial = (IOHIDDeviceGetProperty(device, kIOHIDSerialNumberKey as CFString) as? String) ?? ""
+        print("Connected to device \(serial)!")
+        self.connectionStatus = .connected(serial)
+        
+        buzz(3)
+        initSensitivity(autoTriggers: Defaults.currentController?.autoTriggers ?? false)
+    }
+    
+    private func deviceRemoved(_ device: IOHIDDevice) {
+        if self.device == device {
+            print("Device disconnected.")
+            self.device = nil
+            self.connectionStatus = .disconnected
+            self.buttonState = .released
+            self.lastButtonState = .released
         }
     }
 }

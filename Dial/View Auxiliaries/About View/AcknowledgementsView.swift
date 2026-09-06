@@ -20,26 +20,11 @@ struct AcknowledgementsView: View {
     
     let dependencies: [PackageDescription] = [
         .init(
-            name: "hidapi",
-            owner: "libusb",
-            url: URL(string: "https://github.com/libusb/hidapi")!,
-            license: URL(string: "https://github.com/libusb/hidapi/blob/master/LICENSE.txt")!,
-            reason: Text("HID device communications")
-        ),
-        .init(
             name: "Defaults",
             owner: "Sindre Sorhus",
             url: URL(string: "https://github.com/sindresorhus/Defaults")!,
             license: URL(string: "https://github.com/sindresorhus/Defaults/blob/main/license")!
         ),
-        /*
-        .init(
-            name: "ISSoundAdditions",
-            owner: "InerziaSoft",
-            url: URL(string: "https://github.com/InerziaSoft/ISSoundAdditions")!,
-            license: URL(string: "https://github.com/InerziaSoft/ISSoundAdditions/LICENSE")!
-        ),
-         */
         .init(
             name: "LaunchAtLogin",
             owner: "Sindre Sorhus",

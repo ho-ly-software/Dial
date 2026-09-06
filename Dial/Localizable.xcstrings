@@ -1117,6 +1117,7 @@
       }
     },
     "HID device communications" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {

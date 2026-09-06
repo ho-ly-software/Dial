@@ -66,28 +66,16 @@ System volume down.
     ) {
         switch rotation {
         case .continuous(let direction):
-            var modifiers: NSEvent.ModifierFlags
-            var action: [Hardware.ButtonState: [Direction: (aux: [Int32], normal: Set<Input>)]] = [:]
-            
-            switch buttonState {
-            case .pressed:
-                modifiers = [.shift, .option]
-                action[.pressed] = [
-                    .clockwise: (aux: [Input.keyVolumeUp], normal: []),
-                    .counterclockwise: (aux: [Input.keyVolumeDown], normal: [])
-                ]
-                break
-            case .released:
-                modifiers = []
-                action[.released] = [
-                    .clockwise: (aux: [], normal: [.keyRightArrow]),
-                    .counterclockwise: (aux: [], normal: [.keyLeftArrow])
-                ]
-                break
+            switch (buttonState, direction) {
+            case (.pressed, .clockwise):
+                Input.postAuxKeys([Input.keyVolumeUp], modifiers: [.shift, .option])
+            case (.pressed, .counterclockwise):
+                Input.postAuxKeys([Input.keyVolumeDown], modifiers: [.shift, .option])
+            case (.released, .clockwise):
+                Input.postKeys([.keyRightArrow], modifiers: [])
+            case (.released, .counterclockwise):
+                Input.postKeys([.keyLeftArrow], modifiers: [])
             }
-            
-            Input.postAuxKeys(action[buttonState]![direction]!.aux, modifiers: modifiers)
-            Input.postKeys(action[buttonState]![direction]!.normal, modifiers: modifiers)
         default:
             break
         }

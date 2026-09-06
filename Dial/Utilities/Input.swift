@@ -386,6 +386,13 @@ extension Input {
                 doKey(key.rawValue, down: false)
             }
         }
+        
+        if !modifiers.isEmpty {
+            guard let eventSource = CGEventSource(stateID: .hidSystemState) else { return }
+            let emptyEvent = CGEvent(keyboardEventSource: eventSource, virtualKey: 0, keyDown: false)
+            emptyEvent?.flags = []
+            emptyEvent?.post(tap: .cghidEventTap)
+        }
     }
 }
 

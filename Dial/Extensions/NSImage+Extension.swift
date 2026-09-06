@@ -61,11 +61,9 @@ extension NSImage {
     
     func fitIntoStatusBar() -> NSImage {
         let scalar = NSStatusBar.system.thickness / size.height
-        let image = self
-        
-        image.size = size.applying(CGAffineTransform(scaleX: scalar, y: scalar))
-        
-        return image
+        guard let copy = self.copy() as? NSImage else { return self }
+        copy.size = size.applying(CGAffineTransform(scaleX: scalar, y: scalar))
+        return copy
     }
 }
 

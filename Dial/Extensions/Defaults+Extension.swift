@@ -59,12 +59,22 @@ extension Defaults {
     static func saveController(settings: ShortcutsController.Settings) {
         let id = ControllerID.shortcuts(settings)
         
-        if let activatedIndex = Defaults[.activatedControllerIDs].firstIndex(of: id) {
+        if let activatedIndex = Defaults[.activatedControllerIDs].firstIndex(where: {
+            if case .shortcuts(let s) = $0 { return s.id == settings.id }
+            return false
+        }) {
             Defaults[.activatedControllerIDs][activatedIndex] = id
         }
         
-        if let inactivatedIndex = Defaults[.inactivatedControllerIDs].firstIndex(of: id) {
+        if let inactivatedIndex = Defaults[.inactivatedControllerIDs].firstIndex(where: {
+            if case .shortcuts(let s) = $0 { return s.id == settings.id }
+            return false
+        }) {
             Defaults[.inactivatedControllerIDs][inactivatedIndex] = id
+        }
+        
+        if case .shortcuts(let s) = Defaults[.currentControllerID], s.id == settings.id {
+            Defaults[.currentControllerID] = id
         }
     }
     

@@ -44,7 +44,11 @@ Toggle keyboard backlighting.
     var rotationType: Rotation.RawType = .continuous
     
     func onClick(isDoubleClick: Bool, interval: TimeInterval?, _ callback: SurfaceDial.Callback) {
-        Input.postAuxKeys([Input.keyIlluminationToggle])
+        if isDoubleClick {
+            Input.postAuxKeys([Input.keyIlluminationDown])
+        } else {
+            Input.postAuxKeys([Input.keyIlluminationUp])
+        }
     }
     
     func onRotation(
@@ -54,28 +58,14 @@ Toggle keyboard backlighting.
     ) {
         switch rotation {
         case .continuous(let direction):
-            var modifiers: NSEvent.ModifierFlags
-            var action: [Hardware.ButtonState: [Direction: (aux: [Int32], normal: Set<Input>)]] = [:]
-            
-            switch buttonState {
-            case .pressed:
-                modifiers = [.shift, .option]
-                action[.pressed] = [
-                    .clockwise: (aux: [Input.keyBrightnessUp], normal: []),
-                    .counterclockwise: (aux: [Input.keyBrightnessDown], normal: [])
-                ]
-                break
-            case .released:
-                modifiers = []
-                action[.released] = [
-                    .clockwise: (aux: [Input.keyIlluminationUp], normal: []),
-                    .counterclockwise: (aux: [Input.keyIlluminationDown], normal: [])
-                ]
-                break
+            switch (buttonState, direction) {
+            case (.released, .clockwise):
+                Input.postAuxKeys([Input.keyBrightnessUp])
+            case (.released, .counterclockwise):
+                Input.postAuxKeys([Input.keyBrightnessDown])
+            case (.pressed, _):
+                Input.postAuxKeys([Input.keyIlluminationToggle])
             }
-            
-            Input.postAuxKeys(action[buttonState]![direction]!.aux, modifiers: modifiers)
-            Input.postKeys(action[buttonState]![direction]!.normal, modifiers: modifiers)
         default:
             break
         }

@@ -75,7 +75,16 @@ class ShortcutsController: Controller {
         }
         
         private init(_ from: Self) {
-            self.init(id: from.id)
+            self.init(
+                id: UUID(),
+                name: from.name,
+                symbol: from.symbol,
+                haptics: from.haptics,
+                physicalDirection: from.physicalDirection,
+                alternativeDirection: from.alternativeDirection,
+                rotationType: from.rotationType,
+                shortcuts: from.shortcuts
+            )
         }
         
         init(

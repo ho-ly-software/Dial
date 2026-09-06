@@ -83,7 +83,8 @@ class MainController: ObservableObject, Controller {
     }
     
     func willBeAgent() {
-        dispatch = .init {
+        let item = DispatchWorkItem { [weak self] in
+            guard let self else { return }
             self.isAgent = true
             //self.callback?.window.show()
             self.callback?.device.buzz()
@@ -91,8 +92,8 @@ class MainController: ObservableObject, Controller {
             
             print("Main controller is now the agent.")
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + NSEvent.doubleClickInterval, execute: dispatch!)
+        dispatch = item
+        DispatchQueue.main.asyncAfter(deadline: .now() + NSEvent.doubleClickInterval, execute: item)
     }
     
     func discardUpcomingAgentRole() {

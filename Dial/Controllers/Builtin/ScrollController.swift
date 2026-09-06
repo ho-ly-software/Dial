@@ -33,6 +33,7 @@ Perform a middle button click.
     
     func onClick(isDoubleClick: Bool, interval: TimeInterval?, _ callback: SurfaceDial.Callback) {
         Input.postMouse(.center, buttonState: .pressed)
+        Input.postMouse(.center, buttonState: .released)
     }
     
     func onRelease(_ callback: SurfaceDial.Callback) {
