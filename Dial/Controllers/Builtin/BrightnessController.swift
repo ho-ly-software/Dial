@@ -1,5 +1,5 @@
 //
-//  BrigntnessController.swift
+//  BrightnessController.swift
 //  Dial
 //
 //  Created by KrLite on 2024/3/21.
@@ -13,7 +13,7 @@ class BrightnessController: BuiltinController {
     static let instance: BrightnessController = .init()
     
     var id: ControllerID = .builtin(.brightness)
-    var name: String? = String(localized: .init("Controllers/Default/Brigshtnes: Name", defaultValue: "Brightness"))
+    var name: String? = String(localized: .init("Controllers/Default/Brightness: Name", defaultValue: "Brightness"))
     var symbol: SFSymbol = .sunMax
     
     var controllerDescription: ControllerDescription = .init(
@@ -36,7 +36,10 @@ Keyboard backlighting down.
 """)),
         
         pressAndRotateClockwisely: .init(localized: .init("Controllers/Builtin/Brightness: Press and Rotate Clockwisely", defaultValue: """
-Toggle keyboard backlighting.
+Keyboard backlighting up.
+""")),
+        pressAndRotateCounterclockwisely: .init(localized: .init("Controllers/Builtin/Brightness: Press and Rotate Counterclockwisely", defaultValue: """
+Keyboard backlighting down.
 """))
     )
     
@@ -63,8 +66,10 @@ Toggle keyboard backlighting.
                 Input.postAuxKeys([Input.keyBrightnessUp])
             case (.released, .counterclockwise):
                 Input.postAuxKeys([Input.keyBrightnessDown])
-            case (.pressed, _):
-                Input.postAuxKeys([Input.keyIlluminationToggle])
+            case (.pressed, .clockwise):
+                Input.postAuxKeys([Input.keyIlluminationUp])
+            case (.pressed, .counterclockwise):
+                Input.postAuxKeys([Input.keyIlluminationDown])
             }
         default:
             break

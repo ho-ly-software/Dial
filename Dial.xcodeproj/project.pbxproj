@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28F100012BB0000100000001 /* ShortcutRecorderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F100012BB0000100000000 /* ShortcutRecorderField.swift */; };
+		28F100022BB0000100000001 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F100022BB0000100000000 /* GeneralSettingsView.swift */; };
+		28F100032BB0000100000001 /* ControllersSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F100032BB0000100000000 /* ControllersSettingsView.swift */; };
+		28F100042BB0000100000001 /* ControllerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F100042BB0000100000000 /* ControllerDetailView.swift */; };
+		28F100052BB0000100000001 /* SymbolPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F100052BB0000100000000 /* SymbolPickerView.swift */; };
+		28F100062BB0000100000001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F100062BB0000100000000 /* SettingsView.swift */; };
 		2806E9BE2BAC5C8800CD2AE2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806E9BD2BAC5C8800CD2AE2 /* Date+Extension.swift */; };
 		2806E9C12BAC5E6D00CD2AE2 /* ScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806E9C02BAC5E6D00CD2AE2 /* ScrollController.swift */; };
 		2806E9C32BAC5EAF00CD2AE2 /* PlaybackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806E9C22BAC5EAF00CD2AE2 /* PlaybackController.swift */; };
-		2806E9C52BAC5ED600CD2AE2 /* BrigntnessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806E9C42BAC5ED600CD2AE2 /* BrigntnessController.swift */; };
+		2806E9C52BAC5ED600CD2AE2 /* BrightnessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806E9C42BAC5ED600CD2AE2 /* BrightnessController.swift */; };
 		2806E9C72BAC5EFD00CD2AE2 /* ZoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806E9C62BAC5EFD00CD2AE2 /* ZoomController.swift */; };
 		2806E9C92BAC6A6600CD2AE2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2806E9C82BAC6A6600CD2AE2 /* Localizable.xcstrings */; };
 		2806E9EF2BAC5EFD00CD2AE2 /* UndoRedoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2806E9EE2BAC5EFD00CD2AE2 /* UndoRedoController.swift */; };
@@ -51,10 +57,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28F100012BB0000100000000 /* ShortcutRecorderField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRecorderField.swift; sourceTree = "<group>"; };
+		28F100022BB0000100000000 /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
+		28F100032BB0000100000000 /* ControllersSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllersSettingsView.swift; sourceTree = "<group>"; };
+		28F100042BB0000100000000 /* ControllerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerDetailView.swift; sourceTree = "<group>"; };
+		28F100052BB0000100000000 /* SymbolPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolPickerView.swift; sourceTree = "<group>"; };
+		28F100062BB0000100000000 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2806E9BD2BAC5C8800CD2AE2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		2806E9C02BAC5E6D00CD2AE2 /* ScrollController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollController.swift; sourceTree = "<group>"; };
 		2806E9C22BAC5EAF00CD2AE2 /* PlaybackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackController.swift; sourceTree = "<group>"; };
-		2806E9C42BAC5ED600CD2AE2 /* BrigntnessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrigntnessController.swift; sourceTree = "<group>"; };
+		2806E9C42BAC5ED600CD2AE2 /* BrightnessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessController.swift; sourceTree = "<group>"; };
 		2806E9C62BAC5EFD00CD2AE2 /* ZoomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomController.swift; sourceTree = "<group>"; };
 		2806E9C82BAC6A6600CD2AE2 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2806E9EE2BAC5EFD00CD2AE2 /* UndoRedoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UndoRedoController.swift; sourceTree = "<group>"; };
@@ -115,7 +127,7 @@
 				2887D7822BAC005200D733FC /* MainController.swift */,
 				2806E9C02BAC5E6D00CD2AE2 /* ScrollController.swift */,
 				2806E9C22BAC5EAF00CD2AE2 /* PlaybackController.swift */,
-				2806E9C42BAC5ED600CD2AE2 /* BrigntnessController.swift */,
+				2806E9C42BAC5ED600CD2AE2 /* BrightnessController.swift */,
 				2806E9C62BAC5EFD00CD2AE2 /* ZoomController.swift */,
 				2806E9EE2BAC5EFD00CD2AE2 /* UndoRedoController.swift */,
 			);
@@ -162,6 +174,7 @@
 				2887D77A2BABFE0E00D733FC /* Localizable.swift */,
 				2887D7882BAC011300D733FC /* ShortcutArray.swift */,
 				2887D78A2BAC013300D733FC /* Input.swift */,
+				28F100012BB0000100000000 /* ShortcutRecorderField.swift */,
 				289B83FD2BADC44D00D56D43 /* PermissionsManager.swift */,
 				2821DA772BAEE8250017B5DD /* ObservationTrackingStream.swift */,
 				28DC1B632BB8082100EBE057 /* EventMonitor.swift */,
@@ -216,6 +229,26 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		28F100072BB0000100000000 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				28F100082BB0000100000000 /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		28F100082BB0000100000000 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				28F100062BB0000100000000 /* SettingsView.swift */,
+				28F100022BB0000100000000 /* GeneralSettingsView.swift */,
+				28F100032BB0000100000000 /* ControllersSettingsView.swift */,
+				28F100042BB0000100000000 /* ControllerDetailView.swift */,
+				28F100052BB0000100000000 /* SymbolPickerView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		28EE29AE2BAB2155009005C3 /* Dial */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +258,7 @@
 				2887D7742BABFD0B00D733FC /* Device */,
 				2887D77F2BAC000800D733FC /* Controllers */,
 				2887D7772BABFD2A00D733FC /* Utilities */,
+				28F100072BB0000100000000 /* Views */,
 				28E71A342BAFCE4200722045 /* View Auxiliaries */,
 				286971112BAB2D550074C2FB /* Menu Bar */,
 				286971162BAB2F5F0074C2FB /* Extensions */,
@@ -366,7 +400,7 @@
 				2821DA7A2BAEF60B0017B5DD /* View+Extension.swift in Sources */,
 				289B84002BADC4F900D56D43 /* AppDelegate.swift in Sources */,
 				28DC1B662BB8101500EBE057 /* ModifierFlags+Extensions.swift in Sources */,
-				2806E9C52BAC5ED600CD2AE2 /* BrigntnessController.swift in Sources */,
+				2806E9C52BAC5ED600CD2AE2 /* BrightnessController.swift in Sources */,
 				2821DA782BAEE8250017B5DD /* ObservationTrackingStream.swift in Sources */,
 				2887D78B2BAC013300D733FC /* Input.swift in Sources */,
 				28DC1B682BB81F9300EBE057 /* ControllerDescription.swift in Sources */,
@@ -377,6 +411,12 @@
 				2887D7792BABFD4E00D733FC /* SymbolRepresentable.swift in Sources */,
 				2806E9C72BAC5EFD00CD2AE2 /* ZoomController.swift in Sources */,
 				2806E9EF2BAC5EFD00CD2AE2 /* UndoRedoController.swift in Sources */,
+				28F100012BB0000100000001 /* ShortcutRecorderField.swift in Sources */,
+				28F100022BB0000100000001 /* GeneralSettingsView.swift in Sources */,
+				28F100032BB0000100000001 /* ControllersSettingsView.swift in Sources */,
+				28F100042BB0000100000001 /* ControllerDetailView.swift in Sources */,
+				28F100052BB0000100000001 /* SymbolPickerView.swift in Sources */,
+				28F100062BB0000100000001 /* SettingsView.swift in Sources */,
 				28EE29B02BAB2155009005C3 /* DialApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

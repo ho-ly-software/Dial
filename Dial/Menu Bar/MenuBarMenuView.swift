@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-import SettingsAccess
 import Defaults
-import LaunchAtLogin
+import SFSafeSymbols
+import SettingsAccess
 
 struct MenuBarMenuView: View {
     @Environment(\.openWindow) private var openWindow
@@ -24,12 +24,6 @@ struct MenuBarMenuView: View {
     @Default(.globalSensitivity) var globalSensitivity
     @Default(.globalDirection) var globalDirection
     
-    @Default(.dialMenuThickness) var dialMenuThickness
-    @Default(.dialMenuAnimation) var dialMenuAnimation
-    @Default(.dialMenuAppearsAtCursor) var dialMenuAppearsAtCursor
-    
-    @ObservedObject var startsWithMacOS = LaunchAtLogin.observable
-    
     func possibleChar(from int: Int) -> Character? {
         return String(int).first
     }
@@ -40,19 +34,15 @@ struct MenuBarMenuView: View {
         Button {
             // Nothing to do
         } label: {
-            Text("Surface Dial")
-            Image(systemSymbol: .hockeyPuck)
+            Label("Surface Dial", systemSymbol: .hockeyPuck)
         }
         .disabled(true)
-        .badge(Text(serial ?? ""))
         .orSomeView(condition: !isConnected) {
             Button {
                 dial.connect()
             } label: {
-                Image(systemSymbol: .arrowTriangle2Circlepath)
-                Text("Surface Dial")
+                Label("Surface Dial", systemSymbol: .arrowTriangle2Circlepath)
             }
-            .badge(Text("disconnected"))
         }
         
         Divider()
@@ -60,12 +50,10 @@ struct MenuBarMenuView: View {
         // MARK: - Controllers
         
         Text("Controllers")
-            .badge(Text("press and hold dial"))
         
         ForEach(Array($activatedControllerIDs.enumerated()), id: \.offset) { index, id in
             Toggle(isOn: id.isCurrent) {
-                id.wrappedValue.controller.symbol.image
-                Text(id.wrappedValue.controller.name ?? controllerNamePlaceholder)
+                Label(id.wrappedValue.controller.name ?? controllerNamePlaceholder, systemSymbol: id.wrappedValue.controller.symbol)
             }
             .possibleKeyboardShortcut(
                 possibleChar(from: index).map { KeyEquivalent.init($0) },
@@ -89,64 +77,43 @@ struct MenuBarMenuView: View {
         
         Picker(selection: $globalSensitivity) {
             ForEach(Sensitivity.allCases) { sensitivity in
-                Text(sensitivity.title)
-                    .badge(Text(Image(systemSymbol: sensitivity.symbol)))
+                Label(sensitivity.title, systemSymbol: sensitivity.symbol)
             }
         } label: {
-            Text(.init(localized: .init("Menu: Sensitivity", defaultValue: "Sensitivity")))
+            Label {
+                Text(.init(localized: .init("Menu: Sensitivity", defaultValue: "Sensitivity")))
+            } icon: {
+                Image(systemSymbol: globalSensitivity.symbol)
+            }
         }
-        .badge(Text(Image(systemSymbol: globalSensitivity.symbol)))
         
         Picker(selection: $globalDirection) {
             ForEach(Direction.allCases) { direction in
-                Text(direction.title)
-                    .badge(Text(Image(systemSymbol: direction.symbol)))
+                Label(direction.title, systemSymbol: direction.symbol)
             }
         } label: {
-            Text(.init(localized: .init("Menu: Direction", defaultValue: "Direction")))
+            Label {
+                Text(.init(localized: .init("Menu: Direction", defaultValue: "Direction")))
+            } icon: {
+                Image(systemSymbol: globalDirection.symbol)
+            }
         }
-        .badge(Text(Image(systemSymbol: globalDirection.symbol)))
         
         Divider()
         
-        // MARK: - On-Screen Dial Menu
+        // MARK: - Settings & App Controls
         
-        Text("On-Screen Dial Menu")
-        
-        Toggle(isOn: $dialMenuAppearsAtCursor) {
-            Text(.init(localized: .init("Menu: Show Menu at Cursor Position", defaultValue: "Show Menu at Cursor Position")))
-        }
-        
-        Picker(selection: $dialMenuThickness) {
-            ForEach(DialMenuThickness.allCases) { thickness in
-                Text(thickness.title)
-                    .badge(Text(Image(systemSymbol: thickness.symbol)))
-            }
-        } label: {
-            Text(.init(localized: .init("Menu: Menu Thickness", defaultValue: "Menu Thickness")))
-        }
-        .badge(Text(Image(systemSymbol: dialMenuThickness.symbol)))
-        
-        Picker(selection: $dialMenuAnimation) {
-            ForEach(DialMenuAnimation.allCases) { animation in
-                Text(animation.title)
-                    .badge(Text(Image(systemSymbol: animation.symbol)))
-            }
-        } label: {
-            Text(.init(localized: .init("Menu: Menu Animation", defaultValue: "Menu Animation")))
-        }
-        .badge(Text(Image(systemSymbol: dialMenuAnimation.symbol)))
-        
-        Divider()
-        
-        // MARK: - More Settings
-        
-        Toggle(isOn: $startsWithMacOS.isEnabled) {
-            Text(.init(localized: .init("Menu: Starts with macOS", defaultValue: "Starts with macOS")))
-        }
+        SettingsLink(
+            label: { Text("Settings…") },
+            preAction: {
+                NSApp.activate(ignoringOtherApps: true)
+            },
+            postAction: { }
+        )
+        .keyboardShortcut(",", modifiers: .command)
         
         Button("About \(Bundle.main.appName)…") {
-            NSApp.setActivationPolicy(.regular)
+            NSApp.activate(ignoringOtherApps: true)
             openWindow(id: "about")
         }
         .keyboardShortcut("i", modifiers: .command)

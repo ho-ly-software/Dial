@@ -131,7 +131,7 @@ extension Defaults {
         if wrap || inRange {
             let controller = Defaults[.activatedControllerIDs][(cycledIndex + count) % count]
             Defaults[.currentControllerID] = controller
-            // TODO: Buzz
+            dial.hardware.buzz()
         }
     }
 }

@@ -19,7 +19,22 @@ struct ShortcutArray: Codable, Defaults.Serializable {
     var keys: Set<Input>
     
     var display: String {
-        keys.map { $0.name }.joined(separator: " ")
+        var modifierGlyphs: [String] = []
+        if modifiers.contains(.control) { modifierGlyphs.append("⌃") }
+        if modifiers.contains(.option) { modifierGlyphs.append("⌥") }
+        if modifiers.contains(.shift) { modifierGlyphs.append("⇧") }
+        if modifiers.contains(.command) { modifierGlyphs.append("⌘") }
+        if modifiers.contains(.capsLock) { modifierGlyphs.append("⇪") }
+        if modifiers.contains(.function) { modifierGlyphs.append("fn") }
+        
+        let keyNames = sortedKeys.map { $0.name }
+        if modifierGlyphs.isEmpty {
+            return keyNames.joined(separator: " ")
+        } else if keyNames.isEmpty {
+            return modifierGlyphs.joined()
+        } else {
+            return (modifierGlyphs.joined() + " " + keyNames.joined(separator: " ")).trimmingCharacters(in: .whitespaces)
+        }
     }
     
     var isEmpty: Bool {

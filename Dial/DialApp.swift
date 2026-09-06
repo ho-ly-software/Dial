@@ -32,6 +32,10 @@ struct DialApp: App {
         }
         .menuBarExtraStyle(.menu)
         
+        Settings {
+            SettingsView()
+        }
+        
         Window("About \(Bundle.main.appName)", id: "about") {
             AboutView()
         }

@@ -104,6 +104,9 @@
         }
       }
     },
+    "Activate controller" : {
+
+    },
     "Activated" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -111,6 +114,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已启用"
+          }
+        }
+      }
+    },
+    "Active (%lld/%lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Active (%1$lld/%2$lld)"
           }
         }
       }
@@ -181,6 +194,12 @@
         }
       }
     },
+    "Behavior" : {
+
+    },
+    "Built-in System Controller" : {
+
+    },
     "Builtin" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -235,6 +254,15 @@
         }
       }
     },
+    "Choose Symbol" : {
+
+    },
+    "Clear shortcut" : {
+
+    },
+    "Click Shortcuts" : {
+
+    },
     "Configurations" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -257,6 +285,9 @@
         }
       }
     },
+    "Controller" : {
+
+    },
     "Controller activated" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -267,6 +298,12 @@
           }
         }
       }
+    },
+    "Controller Limit Reached" : {
+
+    },
+    "Controller Name" : {
+
     },
     "Controller Name Placeholder" : {
       "extractionState" : "extracted_with_value",
@@ -363,13 +400,30 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "Toggle keyboard backlighting."
+            "value" : "Keyboard backlighting up."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "开关键盘背光。"
+            "value" : "增加键盘背光亮度。"
+          }
+        }
+      }
+    },
+    "Controllers/Builtin/Brightness: Press and Rotate Counterclockwisely" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Keyboard backlighting down."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "降低键盘背光亮度。"
           }
         }
       }
@@ -666,7 +720,7 @@
         }
       }
     },
-    "Controllers/Default/Brigshtnes: Name" : {
+    "Controllers/Default/Brightness: Name" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
         "en" : {
@@ -767,6 +821,15 @@
         }
       }
     },
+    "Deactivate controller" : {
+
+    },
+    "Default Actions" : {
+
+    },
+    "Delete Controller" : {
+
+    },
     "Dependencies" : {
       "localizations" : {
         "zh-Hans" : {
@@ -777,6 +840,9 @@
         }
       }
     },
+    "Description" : {
+
+    },
     "Dial" : {
       "localizations" : {
         "zh-Hans" : {
@@ -786,6 +852,9 @@
           }
         }
       }
+    },
+    "Dial Hardware" : {
+
     },
     "Dial Menu" : {
       "extractionState" : "stale",
@@ -953,7 +1022,6 @@
       }
     },
     "Direction" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -998,6 +1066,7 @@
       }
     },
     "disconnected" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1018,6 +1087,9 @@
         }
       }
     },
+    "Done" : {
+
+    },
     "Double press" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1028,6 +1100,12 @@
           }
         }
       }
+    },
+    "Double Press" : {
+
+    },
+    "Duplicate Controller" : {
+
     },
     "Follows physical direction" : {
       "extractionState" : "stale",
@@ -1052,7 +1130,6 @@
       }
     },
     "General" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1116,6 +1193,9 @@
         }
       }
     },
+    "Haptic Feedback" : {
+
+    },
     "HID device communications" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1149,6 +1229,18 @@
         }
       }
     },
+    "Inactive" : {
+
+    },
+    "Information" : {
+
+    },
+    "Invert Rotation Direction" : {
+
+    },
+    "Launch at Login" : {
+
+    },
     "License" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1169,6 +1261,9 @@
         }
       }
     },
+    "Menu Animation" : {
+
+    },
     "Menu Bar Item" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1179,6 +1274,9 @@
           }
         }
       }
+    },
+    "Menu Thickness" : {
+
     },
     "Menu: Direction" : {
       "extractionState" : "extracted_with_value",
@@ -1214,28 +1312,6 @@
         }
       }
     },
-    "Menu: Menu Animation" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Menu Animation"
-          }
-        }
-      }
-    },
-    "Menu: Menu Thickness" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Menu Thickness"
-          }
-        }
-      }
-    },
     "Menu: Sensitivity" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -1253,17 +1329,6 @@
         }
       }
     },
-    "Menu: Show Menu at Cursor Position" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Show Menu at Cursor Position"
-          }
-        }
-      }
-    },
     "Menu: Smooth Scroll" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -1276,7 +1341,7 @@
       }
     },
     "Menu: Starts with macOS" : {
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1313,6 +1378,15 @@
         }
       }
     },
+    "Move Down" : {
+
+    },
+    "Move Up" : {
+
+    },
+    "New Custom Controller" : {
+
+    },
     "None" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1335,7 +1409,10 @@
         }
       }
     },
-    "On-Screen Dial Menu" : {
+    "OK" : {
+
+    },
+    "On-Screen HUD" : {
 
     },
     "Open in Settings" : {
@@ -1371,7 +1448,6 @@
       }
     },
     "Press" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1380,6 +1456,12 @@
           }
         }
       }
+    },
+    "Press & Rotate Clockwise" : {
+
+    },
+    "Press & Rotate Counterclockwise" : {
+
     },
     "Press a key…" : {
       "extractionState" : "stale",
@@ -1393,6 +1475,7 @@
       }
     },
     "press and hold dial" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1423,6 +1506,9 @@
           }
         }
       }
+    },
+    "Pressed Rotation Shortcuts" : {
+
     },
     "Quick Settings" : {
       "localizations" : {
@@ -1499,6 +1585,9 @@
         }
       }
     },
+    "Rotate Clockwise" : {
+
+    },
     "Rotate clockwisely" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1510,6 +1599,9 @@
         }
       }
     },
+    "Rotate Counterclockwise" : {
+
+    },
     "Rotate counterclockwisely" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1520,6 +1612,12 @@
           }
         }
       }
+    },
+    "Rotation Mode" : {
+
+    },
+    "Rotation Shortcuts" : {
+
     },
     "Rotation type" : {
       "extractionState" : "stale",
@@ -1566,6 +1664,12 @@
         }
       }
     },
+    "Search Symbols" : {
+
+    },
+    "Select a controller to view its details" : {
+
+    },
     "Send Feedback…" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1578,7 +1682,6 @@
       }
     },
     "Sensitivity" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1674,7 +1777,6 @@
       }
     },
     "Settings…" : {
-      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1683,6 +1785,9 @@
           }
         }
       }
+    },
+    "Show Menu at Cursor Position" : {
+
     },
     "Shows menu bar item" : {
       "extractionState" : "stale",
@@ -1694,6 +1799,12 @@
           }
         }
       }
+    },
+    "Single Press" : {
+
+    },
+    "Smooth Scroll" : {
+
     },
     "Special Thanks" : {
       "localizations" : {
@@ -1770,6 +1881,9 @@
         }
       }
     },
+    "Type shortcut…" : {
+
+    },
     "UI layout guide" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1806,6 +1920,9 @@
           }
         }
       }
+    },
+    "You can have up to %lld active controllers at a time." : {
+
     },
     "Your Surface Dial on Mac." : {
       "localizations" : {

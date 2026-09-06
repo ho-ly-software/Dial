@@ -93,20 +93,32 @@ class HUDManager {
             rootView: HUDContentView(controller: controller)
         )
         
-        // Center the window on the current active screen
-        if let screen = NSScreen.main {
+        // Center the window on the active screen containing the mouse cursor
+        let mouseLoc = NSEvent.mouseLocation
+        let targetScreen = NSScreen.screens.first(where: { NSMouseInRect(mouseLoc, $0.frame, false) }) ?? NSScreen.main ?? NSScreen.screens.first
+        
+        if let screen = targetScreen {
             let screenRect = screen.frame
             let windowRect = window.frame
-            var newOrigin = NSPoint(
-                x: screenRect.origin.x + (screenRect.width - windowRect.width) / 2,
-                y: screenRect.origin.y + (screenRect.height - windowRect.height) / 5
-            )
+            var newOrigin: NSPoint
             
             if Defaults[.dialMenuAppearsAtCursor] {
-                let mouseLoc = NSEvent.mouseLocation
+                let desiredX = mouseLoc.x - windowRect.width / 2
+                let desiredY = mouseLoc.y - windowRect.height / 2
+                
+                let minX = screenRect.minX + 16
+                let maxX = screenRect.maxX - windowRect.width - 16
+                let minY = screenRect.minY + 16
+                let maxY = screenRect.maxY - windowRect.height - 16
+                
                 newOrigin = NSPoint(
-                    x: mouseLoc.x - windowRect.width / 2,
-                    y: mouseLoc.y - windowRect.height / 2
+                    x: max(minX, min(maxX, desiredX)),
+                    y: max(minY, min(maxY, desiredY))
+                )
+            } else {
+                newOrigin = NSPoint(
+                    x: screenRect.origin.x + (screenRect.width - windowRect.width) / 2,
+                    y: screenRect.origin.y + (screenRect.height - windowRect.height) / 2
                 )
             }
             window.setFrameOrigin(newOrigin)
@@ -170,10 +182,18 @@ struct HUDContentView: View {
         45 + dialMenuThickness.value
     }
     
+    private func pointOnTrack(for angleInDegrees: Double, radius: CGFloat) -> (x: CGFloat, y: CGFloat) {
+        let radians = angleInDegrees * .pi / 180.0
+        let x = radius * CGFloat(sin(radians))
+        let y = -radius * CGFloat(cos(radians))
+        return (x, y)
+    }
+    
     var body: some View {
         let activeIndex = activatedControllerIDs.firstIndex(of: currentControllerID ?? .builtin(.scroll)) ?? 0
         let count = activatedControllerIDs.count
         let activeAngle = count > 0 ? (360.0 * Double(activeIndex) / Double(count)) : 0.0
+        let activePoint = pointOnTrack(for: activeAngle, radius: radius)
         
         ZStack {
             // Subtle track stroke
@@ -181,14 +201,15 @@ struct HUDContentView: View {
                 .stroke(Color.primary.opacity(0.08), lineWidth: 1)
                 .frame(width: radius * 2, height: radius * 2)
             
-            // Highlight circle
+            // Highlight sector circle
             if count > 0 {
                 Circle()
-                    .fill(Color.primary.opacity(0.15))
-                    .frame(width: 32, height: 32)
-                    .rotationEffect(.degrees(activeAngle))
-                    .offset(y: -radius)
-                    .rotationEffect(.degrees(-activeAngle))
+                    .fill(Color.accentColor.opacity(0.2))
+                    .overlay(
+                        Circle().stroke(Color.accentColor, lineWidth: 1.5)
+                    )
+                    .frame(width: 34, height: 34)
+                    .offset(x: activePoint.x, y: activePoint.y)
                     .animation(dialMenuAnimation.value, value: activeAngle)
             }
             
@@ -196,14 +217,13 @@ struct HUDContentView: View {
             ForEach(0..<count, id: \.self) { index in
                 let id = activatedControllerIDs[index]
                 let angle = 360.0 * Double(index) / Double(count)
+                let point = pointOnTrack(for: angle, radius: radius)
                 
                 Image(systemSymbol: id.controller.symbol)
-                    .font(.system(size: 16, weight: .regular))
+                    .font(.system(size: 16, weight: index == activeIndex ? .semibold : .regular))
                     .foregroundColor(index == activeIndex ? .primary : .secondary)
                     .frame(width: 32, height: 32)
-                    .rotationEffect(.degrees(angle))
-                    .offset(y: -radius)
-                    .rotationEffect(.degrees(-angle))
+                    .offset(x: point.x, y: point.y)
             }
             
             // Center Area
